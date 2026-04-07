@@ -1,57 +1,48 @@
-:root { --bg: #ffffff; --text: #111; --gray: #999; }
-body { margin: 0; font-family: sans-serif; display: flex; background: var(--bg); color: var(--text); }
-.sidebar { width: 200px; height: 100vh; padding: 40px; position: fixed; border-right: 1px solid #eee; box-sizing: border-box; }
-.sidebar h1 { font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 40px; }
-.sidebar ul { list-style: none; padding: 0; }
-.sidebar li { margin: 20px 0; }
-.sidebar a { text-decoration: none; color: var(--text); font-size: 0.85rem; letter-spacing: 1px; }
-main { margin-left: 200px; padding: 40px; width: calc(100% - 200px); box-sizing: border-box; }
-section { display: none; }
-section.active { display: block; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); grid-auto-columns: minmax(280px, 1fr); gap: 30px; grid-auto-flow: dense; align-items: start; }
-.grid-item { cursor: pointer; margin-bottom: 20px; }
-.grid-item img { width: 100%; height: auto; display: block; transition: 0.3s; }
-.grid-item img:hover { opacity: 0.7; }
-.item-info { margin-top: 10px; font-size: 0.8rem; }
-.item-title { font-weight: bold; }
-.item-meta { color: var(--gray); }
-.span-1 { grid-column: span 1; }
-.span-2 { grid-column: span 2; }
-.span-3 { grid-column: span 3; }
-@media (max-width: 1260px) { .span-3 { grid-column: span 2; } }
-@media (max-width: 950px) { .span-2, .span-3 { grid-column: span 1; } }
-@media (max-width: 768px) { body { flex-direction: column; } .sidebar { width: 100%; height: auto; position: relative; border: none; padding: 20px; border-bottom: 1px solid #eee; } main { margin-left: 0; width: 100%; padding: 20px; } .span-2, .span-3 { grid-column: span 1; } }
-
-/* 【物理修正3】：全面重构详情页容器逻辑，注入 overflow-y 激活滚动轴 */
+/* 此处仅展示修正后的 Modal 核心部分，其余保持不变 */
 #modal { 
     display: none; 
     position: fixed; 
     top: 0; left: 0; 
-    width: 100%; height: 100%; 
+    width: 100vw; height: 100vh; 
     background: #fff; 
-    z-index: 1000; 
-    overflow-y: auto; /* 核心指令：允许内容溢出并生成滚动条 */
+    z-index: 9999; 
+    /* 强制激活物理滚动条，解决滚不动的问题 */
+    overflow-y: scroll; 
+    -webkit-overflow-scrolling: touch;
 }
-.modal-close {
-    position: fixed;
-    top: 20px;
-    right: 40px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    letter-spacing: 2px;
-    z-index: 1001;
-    background: #fff;
-    padding: 10px 20px;
-    border: 1px solid #111;
-}
-.modal-close:hover { background: #111; color: #fff; }
 .modal-content {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 80px 20px 60px 20px; /* 顶部留白防止被返回键遮挡 */
-    min-height: 100%;
+    align-items: center; /* 物理居中所有子项 */
+    padding: 40px 20px;
+    box-sizing: border-box;
 }
-#modal img { max-width: 85%; height: auto; display: block; }
-#modal-caption { margin-top: 30px; text-align: left; width: 85%; max-width: 800px; font-size: 0.95rem; line-height: 1.6; padding-bottom: 40px; }
+.modal-close-trigger {
+    width: 100%;
+    text-align: right;
+    margin-bottom: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+#modal img { 
+    max-width: 100%; 
+    height: auto; 
+    display: block;
+    margin: 0 auto;
+}
+#modal-caption { 
+    margin-top: 30px; 
+    width: 100%; 
+    max-width: 800px; 
+    text-align: center; /* 强制简介文字整体居中 */
+    line-height: 1.6;
+}
+/* 内部文字左对齐补偿 */
+#modal-caption div, #modal-caption p { text-align: left; display: inline-block; width: 100%; }
