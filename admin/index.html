@@ -5,28 +5,6 @@
   <title>Admin</title>
 </head>
 <body>
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const token = params.get('token');
-    
-    // 如果 URL 中携带了 Token，执行物理注入
-    if (token) {
-      const userObj = JSON.stringify({ token: token, backend_type: "github" });
-      localStorage.setItem("decap-cms-user", userObj);
-      localStorage.setItem("netlify-cms-user", userObj);
-      
-      // 清除地址栏的 Token 痕迹
-      window.history.replaceState({}, document.title, window.location.pathname);
-      
-      // 物理通信规避：若是弹窗，则操作主窗体并自毁
-      if (window.opener) {
-        window.opener.location.reload();
-        window.close();
-      } else {
-        window.location.reload();
-      }
-    }
-  </script>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>
