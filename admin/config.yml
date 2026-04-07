@@ -5,24 +5,32 @@ backend:
   base_url: https://xingyu-art-auth.laiyang1969.workers.dev
 media_folder: "images"
 public_folder: "images"
+# 物理激活全局媒体库，改善拖拽体验
+show_preview_links: true
+media_library:
+  name: github
+  config:
+    commit_messages:
+      upload: "Upload image: {{path}}"
+      delete: "Delete image: {{path}}"
 collections:
   - name: "content"
-    label: "网站核心数据管理"
+    label: "管理内容"
     files:
-      - label: "星羽艺术家简介"
+      - label: "艺术家简介"
         name: "bio"
         file: "data/bio.json"
         fields:
-          - {label: "关于艺术家的介绍文字", name: "text", widget: "text"}
-      - label: "作品图库与详细信息"
+          - {label: "介绍文字", name: "text", widget: "text"}
+      - label: "作品图库"
         name: "artworks"
         file: "data/artworks.json"
         fields:
-          - label: "艺术作品列表 (点击 Add 添加新作品)"
+          - label: "作品列表"
             name: "items"
             widget: "list"
             fields:
-              - {label: "1. 拖拽或上传作品图片", name: "image", widget: "image"}
-              - {label: "2. 作品名称 (Title)", name: "title", widget: "string"}
-              - {label: "3. 材料与尺寸 (例如: 布面油画, 120x80cm, 2026)", name: "meta", widget: "string"}
-              - {label: "4. 创作理念与详细简介 (Description)", name: "description", widget: "markdown"}
+              - {label: "作品图片", name: "image", widget: "image", choose_url: false}
+              - {label: "作品标题", name: "title", widget: "string"}
+              - {label: "参数信息", name: "meta", widget: "string"}
+              - {label: "详细简介", name: "description", widget: "markdown"}

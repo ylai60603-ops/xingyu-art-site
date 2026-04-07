@@ -3,8 +3,32 @@
 <head>
   <meta charset="utf-8" />
   <title>Admin</title>
+  <style>
+    /* 物理修正后台界面本身的图片缩略图显示 */
+    .nc-controlPane-widget { overflow: hidden; }
+    img[class^="nc-imageControl-image"] {
+      max-width: 100% !important;
+      height: auto !important;
+      object-fit: contain !important;
+      border: 1px solid #eee;
+    }
+  </style>
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // 物理注入预览窗样式，解决右侧预览图“巨大局部”问题
+    CMS.registerPreviewStyle(`
+      img { 
+        max-width: 100% !important;
+        height: auto !important;
+        display: block;
+        margin: 0 auto;
+        object-fit: contain !important;
+        max-height: 80vh !important;
+      }
+      .art-preview-container { text-align: center; padding: 20px; }
+    `, { raw: true });
+  </script>
 </body>
 </html>
