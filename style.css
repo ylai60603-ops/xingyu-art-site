@@ -1,0 +1,21 @@
+:root { --bg: #ffffff; --text: #111; --gray: #999; }
+body { margin: 0; font-family: sans-serif; display: flex; background: var(--bg); color: var(--text); }
+.sidebar { width: 200px; height: 100vh; padding: 40px; position: fixed; border-right: 1px solid #eee; }
+.sidebar h1 { font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 40px; }
+.sidebar ul { list-style: none; padding: 0; }
+.sidebar li { margin: 20px 0; }
+.sidebar a { text-decoration: none; color: var(--text); font-size: 0.85rem; letter-spacing: 1px; }
+main { margin-left: 280px; padding: 40px; width: 100%; }
+section { display: none; }
+section.active { display: block; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
+.grid-item { cursor: pointer; margin-bottom: 20px; }
+.grid-item img { width: 100%; display: block; transition: 0.3s; }
+.grid-item img:hover { opacity: 0.7; }
+.item-info { margin-top: 10px; font-size: 0.8rem; }
+.item-title { font-weight: bold; }
+.item-meta { color: var(--gray); }
+#modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 1000; justify-content: center; align-items: center; flex-direction: column; }
+#modal img { max-width: 85%; max-height: 75vh; object-fit: contain; }
+#modal-caption { margin-top: 20px; text-align: center; width: 600px; font-size: 0.9rem; }
+@media (max-width: 768px) { body { flex-direction: column; } .sidebar { width: 100%; height: auto; position: relative; border: none; padding: 20px; } main { margin-left: 0; } }

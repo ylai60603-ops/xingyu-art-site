@@ -1,0 +1,27 @@
+backend:
+  name: github
+  repo: ylai60603-ops/xingyu-art-site
+  branch: main
+media_folder: "images"
+public_folder: "images"
+collections:
+  - name: "content"
+    label: "管理内容"
+    files:
+      - label: "艺术家简介"
+        name: "bio"
+        file: "data/bio.json"
+        fields:
+          - {label: "简介文字", name: "text", widget: "text"}
+      - label: "作品图库"
+        name: "artworks"
+        file: "data/artworks.json"
+        fields:
+          - label: "作品列表"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "作品名称", name: "title", widget: "string"}
+              - {label: "材料/年代/尺寸", name: "meta", widget: "string"}
+              - {label: "上传大图", name: "image", widget: "image"}
+              - {label: "详细简介", name: "description", widget: "text"}
