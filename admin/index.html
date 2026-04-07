@@ -1,2 +1,28 @@
-<!DOCTYPE html><html><head><meta charset="utf-8" /><title>Admin</title></head>
-<body><script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xingyu Art Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <h1>Xingyu Art</h1>
+        <ul>
+            <li><a href="#" onclick="showSection('work')">WORK</a></li>
+            <li><a href="#" onclick="showSection('about')">ABOUT</a></li>
+        </ul>
+    </nav>
+    <main id="content-area">
+        <section id="work" class="active"><div class="grid" id="work-grid"></div></section>
+        <section id="about">
+            <div class="about-container"><h2>About</h2><p id="bio-text"></p></div>
+        </section>
+    </main>
+    <div id="modal" onclick="closeModal()">
+        <img id="modal-img" src=""><div id="modal-caption"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
