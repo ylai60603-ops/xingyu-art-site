@@ -1,47 +1,57 @@
 :root { --bg: #ffffff; --text: #111; --gray: #999; }
 body { margin: 0; font-family: sans-serif; display: flex; background: var(--bg); color: var(--text); }
-.sidebar { width: 200px; height: 100vh; padding: 40px; position: fixed; border-right: 1px solid #eee; }
+
+/* 侧边栏与主区域计算基准 */
+.sidebar { width: 200px; height: 100vh; padding: 40px; position: fixed; border-right: 1px solid #eee; box-sizing: border-box; }
 .sidebar h1 { font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 40px; }
 .sidebar ul { list-style: none; padding: 0; }
 .sidebar li { margin: 20px 0; }
 .sidebar a { text-decoration: none; color: var(--text); font-size: 0.85rem; letter-spacing: 1px; }
-main { margin-left: 280px; padding: 40px; width: 100%; }
+main { margin-left: 200px; padding: 40px; width: calc(100% - 200px); box-sizing: border-box; }
 section { display: none; }
 section.active { display: block; }
 
-/* 【物理核心修正1】：追加 align-items: start，强制切断同行元素间的垂直拉伸感染 */
+/* 【物理修正 1】：注入 grid-auto-columns 封杀隐式轨道坍塌 */
 .grid { 
   display: grid; 
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+  grid-auto-columns: minmax(280px, 1fr); 
   gap: 30px; 
   grid-auto-flow: dense; 
   align-items: start; 
 }
 .grid-item { cursor: pointer; margin-bottom: 20px; }
-
-/* 【物理核心修正2】：移除 object-fit 强制裁切，恢复 height: auto 自然比例映射 */
-.grid-item img { 
-  width: 100%; 
-  height: auto; 
-  display: block; 
-  transition: 0.3s; 
-}
+.grid-item img { width: 100%; height: auto; display: block; transition: 0.3s; }
 .grid-item img:hover { opacity: 0.7; }
 
 .item-info { margin-top: 10px; font-size: 0.8rem; }
 .item-title { font-weight: bold; }
 .item-meta { color: var(--gray); }
+
 #modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 1000; justify-content: center; align-items: center; flex-direction: column; }
 #modal img { max-width: 85%; max-height: 75vh; object-fit: contain; }
 #modal-caption { margin-top: 20px; text-align: center; width: 600px; font-size: 0.9rem; }
 
-/* 物理跨度类保持不变，由后台配置项调用 */
+/* 基础跨度声明 */
 .span-1 { grid-column: span 1; }
 .span-2 { grid-column: span 2; }
 .span-3 { grid-column: span 3; }
+
+/* 【物理修正 2】：强制阈值响应式降级 */
+/* 阈值 A (1260px)：当总屏幕不足以容纳 3 个全宽格子时，强制剥夺 span-3 的三格特权，降维至两格 */
+@media (max-width: 1260px) { 
+  .span-3 { grid-column: span 2; } 
+}
+
+/* 阈值 B (950px)：当屏幕仅能容纳单列或双列临界时，强制剥夺所有多格特权 */
+@media (max-width: 950px) { 
+  .span-2, .span-3 { grid-column: span 1; } 
+}
+
+/* 阈值 C (768px)：移动端断点，垂直流式布局 */
 @media (max-width: 768px) { 
   body { flex-direction: column; } 
-  .sidebar { width: 100%; height: auto; position: relative; border: none; padding: 20px; } 
-  main { margin-left: 0; } 
+  .sidebar { width: 100%; height: auto; position: relative; border: none; padding: 20px; border-bottom: 1px solid #eee; } 
+  main { margin-left: 0; width: 100%; padding: 20px; } 
   .span-2, .span-3 { grid-column: span 1; } 
 }
