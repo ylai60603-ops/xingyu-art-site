@@ -7,11 +7,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="sidebar">
+   <nav class="sidebar">
         <h1>Xingyu Art</h1>
         <ul>
-            <li><a href="#" onclick="showSection('work')">WORK</a></li>
-            <li><a href="#" onclick="showSection('about')">ABOUT</a></li>
+            <li><a href="#work" onclick="showSection('work'); return false;">WORK</a></li>
+            <li><a href="#about" onclick="showSection('about'); return false;">ABOUT</a></li>
+            <li><a href="mailto:xlai@saic.edu">CONTACT</a></li>
+            <li><a href="#" onclick="shareSite(); return false;">SHARE</a></li>
         </ul>
     </nav>
     <main id="content-area">
