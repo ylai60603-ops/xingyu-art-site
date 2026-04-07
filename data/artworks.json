@@ -1,13 +1,6 @@
 {
   "items": [
     {
-      "image": "images/Chicago Skyline A Fluid Transcription,7x 79 in,Ink and watercolor on rice paper,2025.jpg",
-      "title": "Chicago Skyline: A Fluid Transcription",
-      "meta": "Year: 2025  Medium: Ink and watercolor on rice paper (Scroll)  Size: 7 x 79 in",
-      "description": " I approach the Chicago skyline not as a fortress of steel, but as a rhythmic, atmospheric vibration. Painted on rice paper, the work abandons architectural rigidity for intuitive, fluid gestures. I utilize the paper\\'s absorbency to let water-heavy blue pigments bleed, softening hard geometry into abstract verticality. Repetitive grids and washing tones do not merely depict facades; they capture the cold, melancholic breath of the city viewed from a distance. The scroll format introduces a temporal dimension, unfolding the view not as a static snapshot, but as a continuous, drifting narrative. By relinquishing tight control, I allow the medium to dictate form, transforming the external landscape into an internal psychological space---a fleeting memory of the city rather than a document.",
-      "span": "3"
-    },
-    {
       "image": "images/reflection-duality-18x24-in-oil-on-canvas-2024.jpg",
       "title": "Reflection / Duality",
       "meta": "Year: 2024  Medium: Oil on canvas  Size: 18 x 24 in",
@@ -32,22 +25,39 @@
       "description": "A bright yellow sphere burns in the corner. Reality fractures right there. I paint the exact second the external world melts into a dark psychological void. Cold, concrete geometry collapses completely. A dark shape covered in blue patterns spills across the jagged architecture. I am forcing the internal anxiety of isolation out into the physical room. The walls just cannot hold the mind anymore."
     },
     {
+      "image": "images/The Psychological Thermometer,11x14,8x10,9x12,Oil on canvas,2025.jpg",
+      "title": "Thermal Portraits / The Psychological Thermometer",
+      "meta": "Year: 2025  Medium: Oil on canvas (Triptych)  Size: 11x14 in,8x10 in,9x12in",
+      "description": "Blue. Red. Green. I paint faces like weather reports. The flesh is a lie. It is just a surface to map internal temperature. I shoved these three canvases together into one group. Why? Because identity never stays at a stable room temperature. Studying in Chicago far from Beijing, my psychological state violently swings from frozen isolation to burning anxiety in a single afternoon. I attacked the canvas with thick oil strokes. I refuse to blend the edges smoothly. I want the raw color to punch your eyes. Do we actually look like the physical bodies in the mirror, or are we just shifting masses of emotional heat?",
+      "span": "2"
+    },
+    {
       "image": "images/Walking Shells,10x30 in,Oil on canvas,2025.jpg",
       "title": "Walking Shells / Grant Park",
       "meta": "Year: 2025  Medium: Oil on canvas  Size: 10 x 30 in",
-      "description": "Giant legs march across the bright green grass. But nobody has a head. I saw these massive sculptures in Chicago\\'s Grant Park and felt an instant chill. They just keep walking forward. A blind, collective movement. Growing up in a huge city like Beijing, crowds usually felt like they had a shared, unified purpose. But here in the US, these heavy figures feel totally isolated even when they stand shoulder to shoulder. So I painted them but stripped away their original rust. I forced different weird textures onto their bodies. One is literally melting. Another is trapped in a rigid checkerboard pattern. I want to test how identity works when you completely remove the face. Do we just become the graphic patterns we wear? We walk. We occupy space. We just never really look at each other."
+      "description": "Giant legs march across the bright green grass. But nobody has a head. I saw these massive sculptures in Chicago\\'s Grant Park and felt an instant chill. They just keep walking forward. A blind, collective movement. Growing up in a huge city like Beijing, crowds usually felt like they had a shared, unified purpose. But here in the US, these heavy figures feel totally isolated even when they stand shoulder to shoulder. So I painted them but stripped away their original rust. I forced different weird textures onto their bodies. One is literally melting. Another is trapped in a rigid checkerboard pattern. I want to test how identity works when you completely remove the face. Do we just become the graphic patterns we wear? We walk. We occupy space. We just never really look at each other.",
+      "span": "2"
     },
     {
       "image": "images/Domestic Uncanny,08x12 in x3,Oil on canvas,2024.jpg",
       "title": "Domestic Uncanny",
       "meta": "Year: 2024  Medium: Oil on canvas (Triptych)  Size: 8 x 12 in (each panel)",
-      "description": " In this triptych, I explore how internal isolation projects onto the neutral screen of everyday architecture. I treat these solitary spaces---a sterile restroom, a dim stairwell, a concrete facade---as receptive surfaces for the subconscious. The unsettling details are not objective realities, but materializations of inner fear: a hand clinging to the window sill from the outside, or a fleeting face in the mirror. I painted these scenes with a clinical flatness to heighten the contrast with these surreal intrusions. I attempt to visualize the dissonance of solitude, where the silence of a familiar domestic setting is interrupted by projections of fragility. The work suggests that the \\\"uncanny\\\" is not an external intruder, but a reflection of our own psyche. I seek to capture that vibration of anxiety where the safety of the home dissolves, and the walls themselves manifest our deepest terrors."
+      "description": " In this triptych, I explore how internal isolation projects onto the neutral screen of everyday architecture. I treat these solitary spaces---a sterile restroom, a dim stairwell, a concrete facade---as receptive surfaces for the subconscious. The unsettling details are not objective realities, but materializations of inner fear: a hand clinging to the window sill from the outside, or a fleeting face in the mirror. I painted these scenes with a clinical flatness to heighten the contrast with these surreal intrusions. I attempt to visualize the dissonance of solitude, where the silence of a familiar domestic setting is interrupted by projections of fragility. The work suggests that the \\\"uncanny\\\" is not an external intruder, but a reflection of our own psyche. I seek to capture that vibration of anxiety where the safety of the home dissolves, and the walls themselves manifest our deepest terrors.",
+      "span": "2"
+    },
+    {
+      "image": "images/Chicago Skyline A Fluid Transcription,7x 79 in,Ink and watercolor on rice paper,2025.jpg",
+      "title": "Chicago Skyline: A Fluid Transcription",
+      "meta": "Year: 2025  Medium: Ink and watercolor on rice paper (Scroll)  Size: 7 x 79 in",
+      "description": " I approach the Chicago skyline not as a fortress of steel, but as a rhythmic, atmospheric vibration. Painted on rice paper, the work abandons architectural rigidity for intuitive, fluid gestures. I utilize the paper\\'s absorbency to let water-heavy blue pigments bleed, softening hard geometry into abstract verticality. Repetitive grids and washing tones do not merely depict facades; they capture the cold, melancholic breath of the city viewed from a distance. The scroll format introduces a temporal dimension, unfolding the view not as a static snapshot, but as a continuous, drifting narrative. By relinquishing tight control, I allow the medium to dictate form, transforming the external landscape into an internal psychological space---a fleeting memory of the city rather than a document.",
+      "span": "3"
     },
     {
       "image": "images/The Subconscious River,128x11 in,Ink&mixed media on paper,2025.jpg",
       "title": "The Subconscious River",
       "meta": "The Subconscious River  Year: 2025  Medium: Ink and mixed media on paper (Scroll)  Size: 128x11 in",
-      "description": "Black ink crashes into gold. Chaos spreads across the long paper. I lost control on purpose. Growing up with traditional Chinese scrolls, I was taught to see nature as a balanced narrative. But my internal world is not balanced at all. So I poured fluid ink to map my own psychological anxiety. The scroll format forces you to read the panic over time. It is a timeline of a mind losing its grip on the physical world."
+      "description": "Black ink crashes into gold. Chaos spreads across the long paper. I lost control on purpose. Growing up with traditional Chinese scrolls, I was taught to see nature as a balanced narrative. But my internal world is not balanced at all. So I poured fluid ink to map my own psychological anxiety. The scroll format forces you to read the panic over time. It is a timeline of a mind losing its grip on the physical world.",
+      "span": "3"
     },
     {
       "image": "images/Medical Astrology The Hidden Flame Medium,8.5 x 11 in (each),Ink on tracing paper&digital prints& lightbox,2025.jpg",
@@ -62,16 +72,11 @@
       "description": "I washed away the meat. I only want the pure, vibrating energy underneath the biological body. The skin is a defensive lie. So I used fluid ink to paint a coiled snake skeleton. Just the spine. This strips the physical form down to its absolute core. I map the raw rhythm of life before it gets trapped inside a fleshy shell."
     },
     {
-      "image": "images/The Psychological Thermometer,11x14,8x10,9x12,Oil on canvas,2025.jpg",
-      "title": "Thermal Portraits / The Psychological Thermometer",
-      "meta": "Year: 2025  Medium: Oil on canvas (Triptych)  Size: 11x14 in,8x10 in,9x12in",
-      "description": "Blue. Red. Green. I paint faces like weather reports. The flesh is a lie. It is just a surface to map internal temperature. I shoved these three canvases together into one group. Why? Because identity never stays at a stable room temperature. Studying in Chicago far from Beijing, my psychological state violently swings from frozen isolation to burning anxiety in a single afternoon. I attacked the canvas with thick oil strokes. I refuse to blend the edges smoothly. I want the raw color to punch your eyes. Do we actually look like the physical bodies in the mirror, or are we just shifting masses of emotional heat?"
-    },
-    {
       "image": "images/Respiration  The Collective Lung,50x30 in,Silicone tubing&wire& balloons-interactive performance,2025.jpg",
       "title": "Respiration / The Collective Lung",
       "meta": "Year: 2025  Medium: Silicone tubing, wire, balloons, interactive performance  Size: 50x30x30 in",
-      "description": "This interactive installation materializes the invisible current connecting all living beings: breath. Constructed from silicone tubing, the vascular structure mimics a bronchial tree, remaining dormant until the audience engages. As viewers form a circle and blow into the tubes together, collective breath inflates the balloons, transforming individual exertion into a shared, rhythmic expansion. The sound of inflating balloons creates a raw, organic auditory landscape. I seek a physical form for vital energy (prana), demonstrating that life is not a solitary event but a continuous, interdependent flow. By making breath visible and tangible, I reveal the fragility and power hidden in our most basic act of survival. It moves my practice from solitary observation to communal ritual, embodying the realization that we are all connected by the same air."
+      "description": "This interactive installation materializes the invisible current connecting all living beings: breath. Constructed from silicone tubing, the vascular structure mimics a bronchial tree, remaining dormant until the audience engages. As viewers form a circle and blow into the tubes together, collective breath inflates the balloons, transforming individual exertion into a shared, rhythmic expansion. The sound of inflating balloons creates a raw, organic auditory landscape. I seek a physical form for vital energy (prana), demonstrating that life is not a solitary event but a continuous, interdependent flow. By making breath visible and tangible, I reveal the fragility and power hidden in our most basic act of survival. It moves my practice from solitary observation to communal ritual, embodying the realization that we are all connected by the same air.",
+      "span": "2"
     }
   ]
 }
