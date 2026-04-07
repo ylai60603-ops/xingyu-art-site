@@ -5,7 +5,6 @@ backend:
   base_url: https://xingyu-art-auth.laiyang1969.workers.dev
 media_folder: "images"
 public_folder: "images"
-show_preview_links: true
 collections:
   - name: "content"
     label: "管理内容"
@@ -14,7 +13,6 @@ collections:
         name: "bio"
         file: "data/bio.json"
         fields:
-          # 【物理变更1】：替换为 markdown 控件
           - {label: "介绍文字", name: "text", widget: "markdown"}
       - label: "作品图库"
         name: "artworks"
@@ -28,5 +26,5 @@ collections:
               - {label: "作品标题", name: "title", widget: "string"}
               - {label: "参数信息", name: "meta", widget: "string"}
               - {label: "详细简介", name: "description", widget: "markdown"}
-              # 【物理变更2】：植入显示位控制开关，默认占1格
-              - {label: "首页显示跨度 (控制长卷占位)", name: "span", widget: "select", options: ["1", "2", "3"], default: "1"}
+              # 【物理核心指令】：新增跨度下拉菜单，默认值为 1
+              - {label: "首页显示宽度 (长卷选2或3)", name: "span", widget: "select", options: ["1", "2", "3"], default: "1"}

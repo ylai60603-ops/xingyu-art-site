@@ -1,7 +1,7 @@
 async function loadDynamicContent() {
     try {
         const b = await fetch('data/bio.json').then(r => r.json());
-        // 【物理变更6】：使用 marked 引擎解析简介中的 MD 代码
+        // 渲染简介，调用 marked 解析 MD
         document.getElementById('bio-text').innerHTML = b.text ? marked.parse(b.text) : '';
         
         const a = await fetch('data/artworks.json').then(r => r.json());
@@ -9,9 +9,10 @@ async function loadDynamicContent() {
         if (a.items) {
             a.items.forEach(art => {
                 const i = document.createElement('div'); 
-                // 【物理变更7】：读取跨度参数并附加 class
-                const spanClass = art.span ? 'span-' + art.span : 'span-1';
-                i.className = 'grid-item ' + spanClass;
+                
+                // 【物理核心指令】：读取后台 span 数据，若无数据则强制默认 fallback 为 1
+                const spanValue = art.span ? art.span : '1';
+                i.className = 'grid-item span-' + spanValue;
                 
                 i.innerHTML = '<img src="'+art.image+'"><div class="item-info"><p class="item-title">'+art.title+'</p><p class="item-meta">'+art.meta+'</p></div>';
                 i.onclick = () => openModal(art); 
@@ -29,7 +30,7 @@ function showSection(id) {
 function openModal(art) {
     document.getElementById('modal').style.display = 'flex';
     document.getElementById('modal-img').src = art.image;
-    // 【物理变更8】：解析详细简介中的 MD 代码
+    // 弹窗内渲染详细简介的 MD
     const descHTML = art.description ? marked.parse(art.description) : '';
     document.getElementById('modal-caption').innerHTML = '<h3>'+art.title+'</h3><p>'+art.meta+'</p><div style="text-align:left; margin-top:10px;">'+descHTML+'</div>';
 }
