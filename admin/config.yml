@@ -5,13 +5,6 @@ backend:
   base_url: https://xingyu-art-auth.laiyang1969.workers.dev
 media_folder: "images"
 public_folder: "images"
-show_preview_links: true
-media_library:
-  name: github
-  config:
-    commit_messages:
-      upload: "Upload image: {{path}}"
-      delete: "Delete image: {{path}}"
 collections:
   - name: "content"
     label: "管理内容"
