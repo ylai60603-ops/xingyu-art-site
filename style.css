@@ -1,5 +1,7 @@
 :root { --bg: #ffffff; --text: #111; --gray: #999; }
 body { margin: 0; font-family: sans-serif; display: flex; background: var(--bg); color: var(--text); }
+
+/* 侧边栏与主舞台物理恢复 */
 .sidebar { width: 200px; height: 100vh; padding: 40px; position: fixed; border-right: 1px solid #eee; box-sizing: border-box; }
 .sidebar h1 { font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 40px; }
 .sidebar ul { list-style: none; padding: 0; }
@@ -8,6 +10,8 @@ body { margin: 0; font-family: sans-serif; display: flex; background: var(--bg);
 main { margin-left: 200px; padding: 40px; width: calc(100% - 200px); box-sizing: border-box; }
 section { display: none; }
 section.active { display: block; }
+
+/* 网格系统与防坍塌引擎物理恢复 */
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); grid-auto-columns: minmax(280px, 1fr); gap: 30px; grid-auto-flow: dense; align-items: start; }
 .grid-item { cursor: pointer; margin-bottom: 20px; }
 .grid-item img { width: 100%; height: auto; display: block; transition: 0.3s; }
@@ -15,6 +19,8 @@ section.active { display: block; }
 .item-info { margin-top: 10px; font-size: 0.8rem; }
 .item-title { font-weight: bold; }
 .item-meta { color: var(--gray); }
+
+/* 显示跨度控制器 */
 .span-1 { grid-column: span 1; }
 .span-2 { grid-column: span 2; }
 .span-3 { grid-column: span 3; }
@@ -22,53 +28,24 @@ section.active { display: block; }
 @media (max-width: 950px) { .span-2, .span-3 { grid-column: span 1; } }
 @media (max-width: 768px) { body { flex-direction: column; } .sidebar { width: 100%; height: auto; position: relative; border: none; padding: 20px; border-bottom: 1px solid #eee; } main { margin-left: 0; width: 100%; padding: 20px; } .span-2, .span-3 { grid-column: span 1; } }
 
-/* 详情页物理重构 */
+/* 独立滚动详情页物理协议 */
 #modal { 
-    display: none; 
-    position: fixed; 
-    top: 0; left: 0; 
-    width: 100vw; height: 100vh; 
-    background: #fff; 
-    z-index: 9999; 
-    overflow-y: auto; 
-    -webkit-overflow-scrolling: touch;
+    display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
+    background: #fff; z-index: 9999; overflow-y: auto; -webkit-overflow-scrolling: touch;
 }
-.modal-content {
-    /* 物理修正3：废弃 flex，使用 block 文档流防截断 */
-    display: block; 
-    width: 100%;
-    margin: 0 auto;
-    padding: 60px 20px 100px 20px; /* 底部预留安全边界 */
-    box-sizing: border-box;
-    text-align: center; /* 全局子元素中轴绑定 */
+.modal-content { 
+    display: block; width: 100%; margin: 0 auto; padding: 60px 20px 100px 20px; 
+    box-sizing: border-box; text-align: center; 
 }
-#modal img { 
-    max-width: 90vw; /* 宽度随屏幕等比缩放 */
-    height: auto; 
-    display: inline-block; 
-}
+#modal img { max-width: 90vw; height: auto; display: inline-block; }
 #modal-caption { 
-    margin-top: 40px; 
-    width: 90vw; 
-    max-width: 1200px; /* 放宽限制，适配长卷文字排版 */
-    display: inline-block;
-    line-height: 1.6;
+    margin-top: 40px; width: 90vw; max-width: 1200px; display: inline-block; line-height: 1.6; 
 }
 #modal-caption h3, #modal-caption p, #modal-caption div { 
-    text-align: center; /* 强制底部所有富文本均居中对齐 */
-    margin-bottom: 10px;
+    text-align: center; margin-bottom: 10px; 
 }
-.modal-close-trigger {
-    display: inline-block;
-    margin-top: 60px; /* 沉底间隔 */
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-    cursor: pointer;
-    padding: 12px 40px;
-    border: 1px solid #111;
-    transition: 0.3s;
+.modal-close-trigger { 
+    display: inline-block; margin-top: 60px; font-size: 0.85rem; letter-spacing: 2px; 
+    cursor: pointer; padding: 12px 40px; border: 1px solid #111; transition: 0.3s; 
 }
-.modal-close-trigger:hover {
-    background: #111;
-    color: #fff;
-}
+.modal-close-trigger:hover { background: #111; color: #fff; }

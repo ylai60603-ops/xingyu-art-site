@@ -47,7 +47,23 @@ function closeModal() {
     document.body.style.overflow = 'auto';
 }
 
-/* 物理修正4：采用高可用度 fallback，消除权限冲突 */
+// 邮件多轨并行处理机制
+function contactArtist(email) {
+    // 动作 1：强制将邮箱地址写入用户系统剪贴板作为备用底线
+    const temp = document.createElement('input');
+    document.body.appendChild(temp);
+    temp.value = email;
+    temp.select();
+    document.execCommand('copy');
+    document.body.removeChild(temp);
+    
+    // 动作 2：弹出明确告知，防止静默阻断造成误解
+    alert("Artist's email (" + email + ") copied to clipboard.\n\nOpening default mail client if available...");
+    
+    // 动作 3：执行底层协议拉起
+    window.location.href = "mailto:" + email;
+}
+
 function shareSite() {
     const url = window.location.href;
     if (navigator.share) {
@@ -58,7 +74,13 @@ function shareSite() {
 }
 
 function fallbackShare(url) {
-    prompt("Copy this link to share / 复制链接以分享:", url);
+    const temp = document.createElement('input');
+    document.body.appendChild(temp);
+    temp.value = url;
+    temp.select();
+    document.execCommand('copy');
+    document.body.removeChild(temp);
+    alert("Website link copied to clipboard for sharing.");
 }
 
 document.addEventListener('DOMContentLoaded', () => {
