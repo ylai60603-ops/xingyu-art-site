@@ -5,7 +5,6 @@ backend:
   base_url: https://xingyu-art-auth.laiyang1969.workers.dev
 media_folder: "images"
 public_folder: "images"
-# 物理激活全局媒体库，改善拖拽体验
 show_preview_links: true
 media_library:
   name: github
