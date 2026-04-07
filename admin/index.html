@@ -2,23 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Admin</title>
+  <title>Content Manager</title>
 </head>
 <body>
-  <script>
-    window.addEventListener("message", function(e) {
-      if (typeof e.data === "string" && e.data.includes("authorization:github:success")) {
-        const tokenMatch = e.data.match(/"token":"([^"]+)"/);
-        if (tokenMatch && tokenMatch[1]) {
-          const userObj = { token: tokenMatch[1], backend_type: "github" };
-          const dbString = JSON.stringify(userObj);
-          localStorage.setItem("decap-cms-user", dbString);
-          localStorage.setItem("netlify-cms-user", dbString);
-          window.location.reload();
-        }
-      }
-    });
-  </script>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>
