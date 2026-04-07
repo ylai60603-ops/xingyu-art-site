@@ -12,7 +12,7 @@
         <ul>
             <li><a href="#work" onclick="showSection('work'); return false;">WORK</a></li>
             <li><a href="#about" onclick="showSection('about'); return false;">ABOUT</a></li>
-            <li><a href="#" onclick="contactArtist('xlai@saic.edu'); return false;">CONTACT</a></li>
+            <li><a href="#" onclick="openContactForm(); return false;">CONTACT</a></li>
             <li><a href="#" onclick="shareSite(); return false;">SHARE</a></li>
         </ul>
     </nav>
@@ -22,6 +22,7 @@
             <div class="about-container"><h2>About</h2><div id="bio-text"></div></div>
         </section>
     </main>
+    
     <div id="modal">
         <div class="modal-content">
             <img id="modal-img" src="">
@@ -29,6 +30,18 @@
             <div class="modal-footer"><div class="modal-close-trigger" onclick="closeModal()">CLOSE</div></div>
         </div>
     </div>
+
+    <div id="contact-panel">
+        <div class="contact-box">
+            <h3 style="margin-bottom: 20px; font-weight: normal; letter-spacing: 1px;">CONTACT ARTIST</h3>
+            <p style="margin-bottom: 30px; font-size: 0.9rem; color: #666;">xlai@saic.edu</p>
+            <button onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=xlai@saic.edu', '_blank')">Open in Gmail</button>
+            <button onclick="window.open('https://outlook.live.com/mail/0/deeplink/compose?to=xlai@saic.edu', '_blank')">Open in Outlook</button>
+            <button onclick="copyToClipboard('xlai@saic.edu', this)" style="background: #fff; color: #111; border: 1px solid #111;">Copy Email Address</button>
+            <div class="contact-cancel" onclick="closeContactForm()">CANCEL</div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="script.js"></script>
 </body>

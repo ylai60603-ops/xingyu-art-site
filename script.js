@@ -13,12 +13,15 @@ async function loadDynamicContent() {
                 g.appendChild(i);
             });
         }
-    } catch(e) { console.error("Error"); }
+    } catch(e) { console.error("Load Failed"); }
 }
+
 function showSection(id) { 
     document.querySelectorAll('section').forEach(s => s.classList.remove('active')); 
     document.getElementById(id).classList.add('active'); 
+    window.scrollTo(0,0);
 }
+
 function openModal(art) {
     document.getElementById('modal').style.display = 'block';
     document.body.style.overflow = 'hidden'; 
@@ -26,28 +29,49 @@ function openModal(art) {
     const descHTML = art.description ? marked.parse(art.description) : '';
     document.getElementById('modal-caption').innerHTML = '<h3>'+art.title+'</h3><p>'+art.meta+'</p><div>'+descHTML+'</div>';
 }
+
 function closeModal() { 
     document.getElementById('modal').style.display = 'none'; 
     document.body.style.overflow = 'auto';
 }
-function contactArtist(email) {
+
+/* 集成多轨联系与分享引擎 */
+function openContactForm() { document.getElementById('contact-panel').style.display = 'flex'; }
+function closeContactForm() { document.getElementById('contact-panel').style.display = 'none'; }
+
+function copyToClipboard(text, btn) {
     const temp = document.createElement('input');
     document.body.appendChild(temp);
-    temp.value = email;
+    temp.value = text;
     temp.select();
     document.execCommand('copy');
     document.body.removeChild(temp);
-    alert("Artist's email (" + email + ") copied.\nOpening your email application...");
-    window.location.href = "mailto:" + email;
+    
+    // 视觉反馈动作
+    const originalText = btn.innerText;
+    btn.innerText = 'Copied!';
+    setTimeout(() => { btn.innerText = originalText; }, 2000);
 }
+
 function shareSite() {
     const url = window.location.href;
+    if (navigator.share) {
+        navigator.share({ title: 'Xingyu Art', url: url }).catch(() => {
+            alertFallback(url);
+        });
+    } else {
+        alertFallback(url);
+    }
+}
+
+function alertFallback(url) {
     const temp = document.createElement('input');
     document.body.appendChild(temp);
     temp.value = url;
     temp.select();
     document.execCommand('copy');
     document.body.removeChild(temp);
-    alert("Website link copied.");
+    alert("Website link copied to clipboard.");
 }
+
 document.addEventListener('DOMContentLoaded', loadDynamicContent);
