@@ -1,7 +1,5 @@
 :root { --bg: #ffffff; --text: #111; --gray: #999; }
 body { margin: 0; font-family: sans-serif; display: flex; background: var(--bg); color: var(--text); }
-
-/* 侧边栏与主区域计算基准 */
 .sidebar { width: 200px; height: 100vh; padding: 40px; position: fixed; border-right: 1px solid #eee; box-sizing: border-box; }
 .sidebar h1 { font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 40px; }
 .sidebar ul { list-style: none; padding: 0; }
@@ -10,48 +8,50 @@ body { margin: 0; font-family: sans-serif; display: flex; background: var(--bg);
 main { margin-left: 200px; padding: 40px; width: calc(100% - 200px); box-sizing: border-box; }
 section { display: none; }
 section.active { display: block; }
-
-/* 【物理修正 1】：注入 grid-auto-columns 封杀隐式轨道坍塌 */
-.grid { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-  grid-auto-columns: minmax(280px, 1fr); 
-  gap: 30px; 
-  grid-auto-flow: dense; 
-  align-items: start; 
-}
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); grid-auto-columns: minmax(280px, 1fr); gap: 30px; grid-auto-flow: dense; align-items: start; }
 .grid-item { cursor: pointer; margin-bottom: 20px; }
 .grid-item img { width: 100%; height: auto; display: block; transition: 0.3s; }
 .grid-item img:hover { opacity: 0.7; }
-
 .item-info { margin-top: 10px; font-size: 0.8rem; }
 .item-title { font-weight: bold; }
 .item-meta { color: var(--gray); }
-
-#modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 1000; justify-content: center; align-items: center; flex-direction: column; }
-#modal img { max-width: 85%; max-height: 75vh; object-fit: contain; }
-#modal-caption { margin-top: 20px; text-align: center; width: 600px; font-size: 0.9rem; }
-
-/* 基础跨度声明 */
 .span-1 { grid-column: span 1; }
 .span-2 { grid-column: span 2; }
 .span-3 { grid-column: span 3; }
+@media (max-width: 1260px) { .span-3 { grid-column: span 2; } }
+@media (max-width: 950px) { .span-2, .span-3 { grid-column: span 1; } }
+@media (max-width: 768px) { body { flex-direction: column; } .sidebar { width: 100%; height: auto; position: relative; border: none; padding: 20px; border-bottom: 1px solid #eee; } main { margin-left: 0; width: 100%; padding: 20px; } .span-2, .span-3 { grid-column: span 1; } }
 
-/* 【物理修正 2】：强制阈值响应式降级 */
-/* 阈值 A (1260px)：当总屏幕不足以容纳 3 个全宽格子时，强制剥夺 span-3 的三格特权，降维至两格 */
-@media (max-width: 1260px) { 
-  .span-3 { grid-column: span 2; } 
+/* 【物理修正3】：全面重构详情页容器逻辑，注入 overflow-y 激活滚动轴 */
+#modal { 
+    display: none; 
+    position: fixed; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%; 
+    background: #fff; 
+    z-index: 1000; 
+    overflow-y: auto; /* 核心指令：允许内容溢出并生成滚动条 */
 }
-
-/* 阈值 B (950px)：当屏幕仅能容纳单列或双列临界时，强制剥夺所有多格特权 */
-@media (max-width: 950px) { 
-  .span-2, .span-3 { grid-column: span 1; } 
+.modal-close {
+    position: fixed;
+    top: 20px;
+    right: 40px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    letter-spacing: 2px;
+    z-index: 1001;
+    background: #fff;
+    padding: 10px 20px;
+    border: 1px solid #111;
 }
-
-/* 阈值 C (768px)：移动端断点，垂直流式布局 */
-@media (max-width: 768px) { 
-  body { flex-direction: column; } 
-  .sidebar { width: 100%; height: auto; position: relative; border: none; padding: 20px; border-bottom: 1px solid #eee; } 
-  main { margin-left: 0; width: 100%; padding: 20px; } 
-  .span-2, .span-3 { grid-column: span 1; } 
+.modal-close:hover { background: #111; color: #fff; }
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 20px 60px 20px; /* 顶部留白防止被返回键遮挡 */
+    min-height: 100%;
 }
+#modal img { max-width: 85%; height: auto; display: block; }
+#modal-caption { margin-top: 30px; text-align: left; width: 85%; max-width: 800px; font-size: 0.95rem; line-height: 1.6; padding-bottom: 40px; }

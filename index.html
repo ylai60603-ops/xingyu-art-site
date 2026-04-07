@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <nav class="sidebar">
+    <nav class="sidebar">
         <h1>Xingyu Art</h1>
         <ul>
             <li><a href="#work" onclick="showSection('work'); return false;">WORK</a></li>
             <li><a href="#about" onclick="showSection('about'); return false;">ABOUT</a></li>
-            <li><a href="mailto:xlai@saic.edu">CONTACT</a></li>
+            <li><a href="#" onclick="copyEmail('xingyu@example.com'); return false;">CONTACT</a></li>
             <li><a href="#" onclick="shareSite(); return false;">SHARE</a></li>
         </ul>
     </nav>
@@ -22,9 +22,15 @@
             <div class="about-container"><h2>About</h2><div id="bio-text"></div></div>
         </section>
     </main>
-    <div id="modal" onclick="closeModal()">
-        <img id="modal-img" src=""><div id="modal-caption"></div>
+    
+    <div id="modal">
+        <div class="modal-close" onclick="closeModal()">&#10005; BACK / 返回</div>
+        <div class="modal-content">
+            <img id="modal-img" src="">
+            <div id="modal-caption"></div>
+        </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="script.js"></script>
 </body>
