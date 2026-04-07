@@ -1,40 +1,68 @@
-// 仅展示修正函数，其余 loadDynamicContent 等保持不变
+async function loadDynamicContent() {
+    try {
+        const b = await fetch('data/bio.json').then(r => r.json());
+        document.getElementById('bio-text').innerHTML = b.text ? marked.parse(b.text) : '';
+        const a = await fetch('data/artworks.json').then(r => r.json());
+        const g = document.getElementById('work-grid');
+        if (a.items) {
+            a.items.forEach(art => {
+                const i = document.createElement('div'); 
+                const spanValue = art.span ? art.span : '1';
+                i.className = 'grid-item span-' + spanValue;
+                i.innerHTML = '<img src="'+art.image+'"><div class="item-info"><p class="item-title">'+art.title+'</p><p class="item-meta">'+art.meta+'</p></div>';
+                i.onclick = () => openModal(art); 
+                g.appendChild(i);
+            });
+        }
+    } catch(e) { console.log("数据尚未初始化或文件缺失"); }
+}
+
+function showSection(id, pushHistory = true) { 
+    document.querySelectorAll('section').forEach(s => s.classList.remove('active')); 
+    document.getElementById(id).classList.add('active'); 
+    if (pushHistory) history.pushState({ section: id }, '', '#' + id);
+}
+
+window.addEventListener('popstate', (event) => {
+    if (event.state && event.state.section) {
+        showSection(event.state.section, false);
+    } else {
+        const hashId = window.location.hash.replace('#', '') || 'work';
+        showSection(hashId, false);
+    }
+});
+
 function openModal(art) {
     const m = document.getElementById('modal');
     m.style.display = 'block';
-    // 物理修正：锁定主页面滚动，让 Modal 独立承载滚动轴
     document.body.style.overflow = 'hidden'; 
-    
     document.getElementById('modal-img').src = art.image;
     const descHTML = art.description ? marked.parse(art.description) : '';
     document.getElementById('modal-caption').innerHTML = '<h3>'+art.title+'</h3><p>'+art.meta+'</p><div>'+descHTML+'</div>';
-    
-    // 强制将 Modal 滚动条重置到顶部
     m.scrollTop = 0;
 }
 
 function closeModal() { 
     document.getElementById('modal').style.display = 'none'; 
-    // 物理修正：释放主页面滚动
     document.body.style.overflow = 'auto';
 }
 
+/* 物理修正4：采用高可用度 fallback，消除权限冲突 */
 function shareSite() {
     const url = window.location.href;
-    // 物理降级方案：优先尝试 API，失败则执行传统 prompt
-    if (navigator.share && window.isSecureContext) {
-        navigator.share({ title: 'Xingyu Art', url: url }).catch(() => copyToClipboard(url));
+    if (navigator.share) {
+        navigator.share({ title: 'Xingyu Art', url: url }).catch(() => { fallbackShare(url); });
     } else {
-        copyToClipboard(url);
+        fallbackShare(url);
     }
 }
 
-function copyToClipboard(text) {
-    const temp = document.createElement('input');
-    document.body.appendChild(temp);
-    temp.value = text;
-    temp.select();
-    document.execCommand('copy'); // 物理兼容方案：执行传统复制命令
-    document.body.removeChild(temp);
-    alert("Link copied to clipboard / 链接已复制");
+function fallbackShare(url) {
+    prompt("Copy this link to share / 复制链接以分享:", url);
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadDynamicContent();
+    const initialSection = window.location.hash.replace('#', '') || 'work';
+    showSection(initialSection, false);
+});
