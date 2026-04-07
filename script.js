@@ -47,21 +47,36 @@ function closeModal() {
     document.body.style.overflow = 'auto';
 }
 
-// 邮件多轨并行处理机制
+// 【物理引擎注入】：动态生成 Webmail 网页写信选择器，绕过本地邮件客户端依赖
 function contactArtist(email) {
-    // 动作 1：强制将邮箱地址写入用户系统剪贴板作为备用底线
+    const overlay = document.createElement('div');
+    overlay.id = 'contact-overlay';
+    overlay.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(255,255,255,0.95);z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;';
+    
+    overlay.innerHTML = `
+        <div style="text-align:center; padding:40px; border:1px solid #eee; background:#fff; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+            <h3 style="margin-bottom:20px; font-weight:normal; letter-spacing:1px;">CONTACT ARTIST</h3>
+            <p style="margin-bottom:30px; font-size:0.9rem; color:#666;">${email}</p>
+            <div style="display:flex; flex-direction:column; gap:15px; width:220px; margin:0 auto;">
+                <button onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=${email}', '_blank'); document.body.removeChild(this.closest('#contact-overlay'));" style="padding:10px; cursor:pointer; background:#fff; border:1px solid #111; transition:0.3s;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='#fff'">Open in Gmail</button>
+                <button onclick="window.open('https://outlook.live.com/mail/0/deeplink/compose?to=${email}', '_blank'); document.body.removeChild(this.closest('#contact-overlay'));" style="padding:10px; cursor:pointer; background:#fff; border:1px solid #111; transition:0.3s;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='#fff'">Open in Outlook</button>
+                <button onclick="copyFallback('${email}', this)" style="padding:10px; cursor:pointer; background:#111; color:#fff; border:1px solid #111;">Copy Email Address</button>
+                <button onclick="document.body.removeChild(this.closest('#contact-overlay'))" style="padding:10px; cursor:pointer; background:none; border:none; margin-top:10px; font-size:0.8rem; letter-spacing:1px;">CANCEL</button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(overlay);
+}
+
+function copyFallback(email, btn) {
     const temp = document.createElement('input');
     document.body.appendChild(temp);
     temp.value = email;
     temp.select();
     document.execCommand('copy');
     document.body.removeChild(temp);
-    
-    // 动作 2：弹出明确告知，防止静默阻断造成误解
-    alert("Artist's email (" + email + ") copied to clipboard.\n\nOpening default mail client if available...");
-    
-    // 动作 3：执行底层协议拉起
-    window.location.href = "mailto:" + email;
+    btn.innerText = 'Copied!';
+    setTimeout(() => document.body.removeChild(btn.closest('#contact-overlay')), 1000);
 }
 
 function shareSite() {
