@@ -1,28 +1,35 @@
-/* 独立滚动详情页物理协议 */
-#modal { 
-    display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
-    background: #fff; z-index: 9999; overflow-y: auto; -webkit-overflow-scrolling: touch;
-}
-.modal-content { 
-    display: block; width: 100%; margin: 0 auto; padding: 40px 20px 80px 20px; 
-    box-sizing: border-box; text-align: center; 
-}
+:root { --bg: #ffffff; --text: #111; --gray: #999; }
+body { margin: 0; font-family: sans-serif; display: flex; background: var(--bg); color: var(--text); }
+.sidebar { width: 200px; height: 100vh; padding: 40px; position: fixed; border-right: 1px solid #eee; box-sizing: border-box; background: #fff; z-index: 100; }
+.sidebar h1 { font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 40px; }
+.sidebar ul { list-style: none; padding: 0; }
+.sidebar li { margin: 20px 0; }
+.sidebar a { text-decoration: none; color: var(--text); font-size: 0.85rem; letter-spacing: 1px; }
+main { margin-left: 200px; padding: 40px; width: calc(100% - 200px); box-sizing: border-box; }
+section { display: none; }
+section.active { display: block; }
+
+/* 基础网格：修正 2格/3格作品的对齐 */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; grid-auto-flow: dense; align-items: start; }
+.grid-item { cursor: pointer; margin-bottom: 20px; }
+.grid-item img { width: 100%; height: auto; display: block; }
+.item-info { margin-top: 10px; font-size: 0.8rem; text-align: center; }
+.span-2 { grid-column: span 2; }
+.span-3 { grid-column: span 3; }
+
+/* 作品详情页：物理限高，确保一屏全显 */
+#modal { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #fff; z-index: 9999; overflow-y: auto; }
+.modal-content { display: block; width: 100%; padding: 40px 20px; box-sizing: border-box; text-align: center; }
 #modal img { 
     max-width: 90vw; 
-    max-height: 75vh; /* 物理核心修正：强制作品最大高度锁死在屏幕高度的 75% 内 */
-    width: auto; 
-    height: auto; 
-    object-fit: contain; 
-    display: inline-block; 
+    max-height: 70vh; /* 强制锁定视口高度 70%，确保不溢出屏幕 */
+    width: auto; height: auto; object-fit: contain; display: inline-block; 
 }
-#modal-caption { 
-    margin-top: 30px; width: 90vw; max-width: 1200px; display: inline-block; line-height: 1.6; 
-}
-#modal-caption h3, #modal-caption p, #modal-caption div { 
-    text-align: center; margin-bottom: 10px; 
-}
-.modal-close-trigger { 
-    display: inline-block; margin-top: 50px; font-size: 0.85rem; letter-spacing: 2px; 
-    cursor: pointer; padding: 12px 40px; border: 1px solid #111; transition: 0.3s; 
-}
-.modal-close-trigger:hover { background: #111; color: #fff; }
+/* 物理修正：强制文字在画作下方中轴对齐 */
+#modal-caption { margin: 30px auto; width: 90%; max-width: 1000px; display: block; text-align: center; }
+#modal-caption h3, #modal-caption p, #modal-caption div { text-align: center; margin-bottom: 10px; }
+
+.modal-footer { width: 100%; padding: 40px 0 100px 0; text-align: center; }
+.modal-close-trigger { display: inline-block; cursor: pointer; padding: 12px 60px; border: 1px solid #111; letter-spacing: 2px; font-size: 0.8rem; }
+
+@media (max-width: 768px) { body { flex-direction: column; } .sidebar { width: 100%; height: auto; position: relative; border-bottom: 1px solid #eee; } main { margin-left: 0; width: 100%; } }
