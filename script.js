@@ -35,7 +35,6 @@ function closeModal() {
     document.body.style.overflow = 'auto';
 }
 
-/* 集成多轨联系与分享引擎 */
 function openContactForm() { document.getElementById('contact-panel').style.display = 'flex'; }
 function closeContactForm() { document.getElementById('contact-panel').style.display = 'none'; }
 
@@ -47,7 +46,6 @@ function copyToClipboard(text, btn) {
     document.execCommand('copy');
     document.body.removeChild(temp);
     
-    // 视觉反馈动作
     const originalText = btn.innerText;
     btn.innerText = 'Copied!';
     setTimeout(() => { btn.innerText = originalText; }, 2000);
@@ -56,7 +54,7 @@ function copyToClipboard(text, btn) {
 function shareSite() {
     const url = window.location.href;
     if (navigator.share) {
-        navigator.share({ title: 'Xingyu Art', url: url }).catch(() => {
+        navigator.share({ title: 'Xingyu Lai Art', url: url }).catch(() => {
             alertFallback(url);
         });
     } else {

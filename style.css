@@ -16,27 +16,26 @@ section.active { display: block; }
 .grid-item img { width: 100%; height: auto; display: block; }
 .item-info { margin-top: 10px; font-size: 0.8rem; text-align: center; }
 
-/* 网格跨度与降级 */
 .span-2 { grid-column: span 2; }
 .span-3 { grid-column: span 3; }
 @media (max-width: 1260px) { .span-3 { grid-column: span 2; } }
 @media (max-width: 950px) { .span-2, .span-3 { grid-column: span 1; } }
 
-/* 详情页物理限高与居中 */
 #modal { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #fff; z-index: 9999; overflow-y: auto; }
 .modal-content { display: block; width: 100%; padding: 40px 20px; box-sizing: border-box; text-align: center; }
 #modal img { max-width: 90vw; max-height: 70vh; width: auto; height: auto; object-fit: contain; display: inline-block; }
 #modal-caption { margin: 30px auto; width: 90%; max-width: 1000px; display: block; text-align: center; line-height: 1.6; }
 #modal-caption h3, #modal-caption p, #modal-caption div { text-align: center; margin-bottom: 10px; }
-.modal-footer { width: 100%; padding: 40px 0 100px 0; text-align: center; }
+
+/* 复合渲染协议：作品底部与 ABOUT 底部共用居中返回样式 */
+.modal-footer, .about-footer { width: 100%; padding: 40px 0 100px 0; text-align: center; }
 .modal-close-trigger { display: inline-block; cursor: pointer; padding: 12px 60px; border: 1px solid #111; letter-spacing: 2px; font-size: 0.8rem; transition: 0.3s; }
 .modal-close-trigger:hover { background: #111; color: #fff; }
 
-/* 内置写信UI专属渲染 */
 #contact-panel { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(255,255,255,0.98); z-index: 10000; justify-content: center; align-items: center; }
 .contact-box { width: 90%; max-width: 400px; text-align: center; padding: 40px; background: #fff; border: 1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-.contact-box button { width: 100%; padding: 12px; margin-bottom: 15px; background: #111; color: #fff; border: none; cursor: pointer; transition: 0.3s; font-size: 0.9rem; letter-spacing: 1px; }
-.contact-box button:hover { opacity: 0.8; }
+.contact-box button, .contact-box .mail-link { display: block; box-sizing: border-box; width: 100%; padding: 12px; margin-bottom: 15px; background: #111; color: #fff; border: none; cursor: pointer; transition: 0.3s; font-size: 0.9rem; letter-spacing: 1px; text-decoration: none; }
+.contact-box button:hover, .contact-box .mail-link:hover { opacity: 0.8; }
 .contact-cancel { margin-top: 10px; cursor: pointer; font-size: 0.8rem; letter-spacing: 1px; color: var(--gray); }
 
 @media (max-width: 768px) { body { flex-direction: column; } .sidebar { width: 100%; height: auto; position: relative; border-bottom: 1px solid #eee; } main { margin-left: 0; width: 100%; } }
