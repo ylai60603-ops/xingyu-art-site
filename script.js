@@ -45,7 +45,7 @@ function openModal(art) {
     const track = document.getElementById('modal-img-track');
     track.classList.remove('is-scrolling');
 
-    // 物理修正 1：强制合并新旧图库为绝对唯一的一维数组
+    // 物理修正：強制合併新舊圖庫為絕對唯一的一維数组
     currentGalleryData = [];
     if (art.image) currentGalleryData.push(art.image);
     if (art.gallery && Array.isArray(art.gallery)) {
@@ -91,11 +91,11 @@ function openModal(art) {
         newModalImg.style.cursor = 'ew-resize';
 
         const startAnimation = () => {
+            // 物理修正 2：注入 100ms 延遲以確保寬高校準，並倍增速率至 2.5
             setTimeout(() => {
                 track.scrollLeft = 0;
                 if (track.scrollWidth > track.clientWidth) {
                     let dir = 1;
-                    // 物理修正 2：将速度参数从 1.0 跃升至 2.5
                     const speed = 2.5; 
                     
                     function step() {
@@ -109,6 +109,7 @@ function openModal(art) {
             }, 100);
         };
 
+        // 物理修正 3：注入 complete 屬性快照以繞過緩存跳躍
         if (newModalImg.complete) startAnimation();
         else newModalImg.onload = startAnimation;
     }
@@ -117,7 +118,6 @@ function openModal(art) {
     document.getElementById('modal-caption').innerHTML = '<h3>'+art.title+'</h3><p>'+art.meta+'</p><div>'+descHTML+'</div>';
 }
 
-/* 独立物理控制模块：翻页器与视图更新 */
 function renderDots() {
     const dotsContainer = document.getElementById('gallery-dots');
     dotsContainer.innerHTML = '';
