@@ -33,4 +33,5 @@ collections:
               - {label: "参数信息", name: "meta", widget: "string", required: false}
               - {label: "详细简介", name: "description", widget: "markdown", required: false}
               - {label: "首页显示宽度 (长卷选2或3)", name: "span", widget: "select", options: ["1", "2", "3"], default: "1", required: false}
+              # 【核心配置补全】：向前端传递动画触发信号的布尔值物理开关
               - {label: "开启长卷自动水平巡视", name: "autoScroll", widget: "boolean", default: false, required: false}
