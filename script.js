@@ -33,19 +33,21 @@ function openModal(art) {
     
     if (scrollRAF) cancelAnimationFrame(scrollRAF);
 
+    const track = document.getElementById('modal-img-track');
+    track.classList.remove('is-scrolling');
+
     let currentGallery = [];
     if (art.gallery && art.gallery.length > 0) currentGallery = art.gallery;
     else if (art.image) currentGallery = [art.image];
 
     let currentIndex = 0;
-    const track = document.getElementById('modal-img-track');
     const modalImg = document.getElementById('modal-img');
     modalImg.src = currentGallery[currentIndex];
 
     const newModalImg = modalImg.cloneNode(true);
     modalImg.parentNode.replaceChild(newModalImg, modalImg);
 
-    if (currentGallery.length > 1) {
+    if (!art.autoScroll && currentGallery.length > 1) {
         newModalImg.style.cursor = 'pointer';
         newModalImg.title = 'Click for next image';
         newModalImg.addEventListener('click', () => {
@@ -54,7 +56,6 @@ function openModal(art) {
             setTimeout(() => {
                 newModalImg.src = currentGallery[currentIndex];
                 newModalImg.style.opacity = '1';
-                if(art.autoScroll) track.scrollLeft = 0; 
             }, 150);
         });
     } else {
@@ -62,23 +63,36 @@ function openModal(art) {
         newModalImg.title = '';
     }
 
+    // 物理修正 2：重构引擎触发器，解决缓存不执行动画的死角
     if (art.autoScroll) {
+        track.classList.add('is-scrolling');
         newModalImg.style.cursor = 'ew-resize';
-        newModalImg.onload = () => {
-            track.scrollLeft = 0;
-            let dir = 1;
-            const speed = 1.0; 
-            
-            function step() {
-                track.scrollLeft += dir * speed;
-                if (track.scrollLeft >= (track.scrollWidth - track.clientWidth - 1)) dir = -1;
-                if (track.scrollLeft <= 0) dir = 1;
-                scrollRAF = requestAnimationFrame(step);
-            }
-            setTimeout(() => { scrollRAF = requestAnimationFrame(step); }, 1000);
+
+        const startAnimation = () => {
+            // 延迟 100ms，等待 CSS flex-start 物理重绘完毕，再计算精确宽度
+            setTimeout(() => {
+                track.scrollLeft = 0;
+                if (track.scrollWidth > track.clientWidth) {
+                    let dir = 1;
+                    const speed = 0.5; // 0.5像素/帧的慢速设定
+                    
+                    function step() {
+                        track.scrollLeft += dir * speed;
+                        if (track.scrollLeft >= (track.scrollWidth - track.clientWidth - 1)) dir = -1;
+                        if (track.scrollLeft <= 0) dir = 1;
+                        scrollRAF = requestAnimationFrame(step);
+                    }
+                    scrollRAF = requestAnimationFrame(step);
+                }
+            }, 100);
         };
-    } else {
-        newModalImg.onload = null;
+
+        // 侦测缓存：若图片已就绪则直接执行，否则等待网络加载
+        if (newModalImg.complete) {
+            startAnimation();
+        } else {
+            newModalImg.onload = startAnimation;
+        }
     }
 
     const descHTML = art.description ? marked.parse(art.description) : '';
