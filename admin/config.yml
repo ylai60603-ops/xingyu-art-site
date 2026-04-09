@@ -23,14 +23,12 @@ collections:
             name: "items"
             widget: "list"
             fields:
-              - {label: "旧版单图 (保留兼容勿删)", name: "image", widget: "image", choose_url: false, required: false}
-              - label: "作品图集 (支持多图滑动切换)"
+              # 物理修正 1：彻底销毁旧版单图字段，统一至 list 数组结构
+              - label: "作品图集 (单图或多图均在此添加)"
                 name: "gallery"
                 widget: "list"
                 required: false
-                # 物理修正：图集内部组件也设为非必填，防止空插槽报错
                 field: {label: "图片", name: "image", widget: "image", choose_url: false, required: false}
-              # 物理修正：标题设为非必填，彻底解除保存锁
               - {label: "作品标题", name: "title", widget: "string", required: false}
               - {label: "参数信息", name: "meta", widget: "string", required: false}
               - {label: "详细简介", name: "description", widget: "markdown", required: false}

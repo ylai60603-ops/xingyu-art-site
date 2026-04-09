@@ -63,18 +63,17 @@ function openModal(art) {
         newModalImg.title = '';
     }
 
-    // 物理修正 2：重构引擎触发器，解决缓存不执行动画的死角
     if (art.autoScroll) {
         track.classList.add('is-scrolling');
         newModalImg.style.cursor = 'ew-resize';
 
         const startAnimation = () => {
-            // 延迟 100ms，等待 CSS flex-start 物理重绘完毕，再计算精确宽度
             setTimeout(() => {
                 track.scrollLeft = 0;
                 if (track.scrollWidth > track.clientWidth) {
                     let dir = 1;
-                    const speed = 0.5; // 0.5像素/帧的慢速设定
+                    // 物理修正 2：将速度从 0.5 提升至 1.0 (像素/帧)
+                    const speed = 1.0; 
                     
                     function step() {
                         track.scrollLeft += dir * speed;
@@ -87,7 +86,6 @@ function openModal(art) {
             }, 100);
         };
 
-        // 侦测缓存：若图片已就绪则直接执行，否则等待网络加载
         if (newModalImg.complete) {
             startAnimation();
         } else {
