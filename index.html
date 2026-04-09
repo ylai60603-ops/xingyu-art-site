@@ -31,10 +31,15 @@
     </main>
     
     <div id="modal">
+        <div id="gallery-nav-left" class="gallery-nav" onclick="prevImage(event)">&#10094;</div>
+        <div id="gallery-nav-right" class="gallery-nav" onclick="nextImage(event)">&#10095;</div>
+        
         <div class="modal-content">
             <div id="modal-img-track">
                 <img id="modal-img" src="">
             </div>
+            <div id="gallery-dots" class="gallery-dots"></div>
+            
             <div id="modal-caption"></div>
             <div class="modal-footer"><div class="modal-close-trigger" onclick="closeModal()">CLOSE</div></div>
         </div>

@@ -24,14 +24,14 @@ collections:
             widget: "list"
             summary: '{{title}}'
             fields:
-              # 【核心物理修正】：将 title 字段强行置于序列绝对首位，剥夺 gallery 字段的摘要优先级
               - {label: "作品标题", name: "title", widget: "string", required: false}
-              
-              - {label: "旧版单图 (保留兼容勿删)", name: "image", widget: "image", choose_url: false, required: false}
-              - label: "作品图集 (单图或多图均在此添加)"
+              - {label: "旧版单图 (作为首图展示)", name: "image", widget: "image", choose_url: false, required: false}
+              - label: "附加作品图集 (支持多图滑动切换)"
                 name: "gallery"
                 widget: "list"
                 required: false
+                # 物理修正：提取底层字符串值作为列表折叠后的文件名显示
+                summary: '{{value}}'
                 field: {label: "图片", name: "image", widget: "image", choose_url: false, required: false}
               - {label: "参数信息", name: "meta", widget: "string", required: false}
               - {label: "详细简介", name: "description", widget: "markdown", required: false}

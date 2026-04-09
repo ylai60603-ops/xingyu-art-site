@@ -24,19 +24,22 @@ section.active { display: block; }
 #modal { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #fff; z-index: 9999; overflow-y: auto; }
 .modal-content { display: flex; flex-direction: column; align-items: center; width: 100%; padding: 40px 20px; box-sizing: border-box; text-align: center; }
 
-/* 静态画作：强制收束于 70vh 轨道内并居中对齐 */
 #modal-img-track { width: 90vw; height: 70vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 #modal img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; transition: 0.2s opacity; }
 
-/* 物理修正 1：长卷巡视状态解除居中锁定，释放左右边界 */
-#modal-img-track.is-scrolling { 
-    justify-content: flex-start; /* 必须改为 flex-start 才能物理滚动 */
-    overflow-x: scroll; 
-    scrollbar-width: none; 
-    -ms-overflow-style: none; 
-}
+#modal-img-track.is-scrolling { justify-content: flex-start; overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none; }
 #modal-img-track.is-scrolling::-webkit-scrollbar { display: none; }
 #modal-img-track.is-scrolling img { max-width: none; }
+
+/* 物理修正：多图 UI 渲染层 */
+.gallery-nav { display: none; position: fixed; top: 50%; transform: translateY(-50%); font-size: 3rem; color: #fff; cursor: pointer; padding: 20px; z-index: 10001; user-select: none; text-shadow: 0 2px 10px rgba(0,0,0,0.8); transition: 0.3s; }
+.gallery-nav:hover { opacity: 0.6; }
+#gallery-nav-left { left: 10px; }
+#gallery-nav-right { right: 10px; }
+
+.gallery-dots { display: none; justify-content: center; margin-top: 15px; gap: 8px; width: 100%; }
+.gallery-dot { width: 8px; height: 8px; background: #ccc; border-radius: 50%; cursor: pointer; transition: 0.3s; }
+.gallery-dot.active { background: #111; }
 
 #modal-caption { margin: 30px auto; width: 90%; max-width: 1000px; display: block; text-align: center; line-height: 1.6; }
 #modal-caption h3, #modal-caption p, #modal-caption div { text-align: center; margin-bottom: 10px; }

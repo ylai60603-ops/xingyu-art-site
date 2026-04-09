@@ -1,4 +1,6 @@
 let scrollRAF = null;
+let currentGalleryData = [];
+let currentGalleryIndex = 0;
 
 async function loadDynamicContent() {
     try {
@@ -11,7 +13,14 @@ async function loadDynamicContent() {
             a.items.forEach(art => {
                 const i = document.createElement('div'); 
                 i.className = 'grid-item span-' + (art.span || '1');
-                const coverImg = (art.gallery && art.gallery.length > 0) ? art.gallery[0] : art.image;
+                
+                // 获取封面：兼容单图优先，若无单图则抓取图集首图
+                let coverImg = '';
+                if (art.image) coverImg = art.image;
+                else if (art.gallery && art.gallery.length > 0) {
+                    coverImg = typeof art.gallery[0] === 'string' ? art.gallery[0] : art.gallery[0].image;
+                }
+                
                 i.innerHTML = '<img src="'+coverImg+'"><div class="item-info"><p>'+art.title+'</p></div>';
                 i.onclick = () => openModal(art); 
                 g.appendChild(i);
@@ -36,31 +45,45 @@ function openModal(art) {
     const track = document.getElementById('modal-img-track');
     track.classList.remove('is-scrolling');
 
-    let currentGallery = [];
-    if (art.gallery && art.gallery.length > 0) currentGallery = art.gallery;
-    else if (art.image) currentGallery = [art.image];
+    // 物理修正 1：强制合并新旧图库为绝对唯一的一维数组
+    currentGalleryData = [];
+    if (art.image) currentGalleryData.push(art.image);
+    if (art.gallery && Array.isArray(art.gallery)) {
+        art.gallery.forEach(g => {
+            if (typeof g === 'string') currentGalleryData.push(g);
+            else if (g && g.image) currentGalleryData.push(g.image);
+        });
+    }
+    currentGalleryData = [...new Set(currentGalleryData)]; // 剔除可能重复添加的数据
+    currentGalleryIndex = 0;
 
-    let currentIndex = 0;
     const modalImg = document.getElementById('modal-img');
-    modalImg.src = currentGallery[currentIndex];
-
     const newModalImg = modalImg.cloneNode(true);
     modalImg.parentNode.replaceChild(newModalImg, modalImg);
+    newModalImg.src = currentGalleryData[currentGalleryIndex];
 
-    if (!art.autoScroll && currentGallery.length > 1) {
+    const navLeft = document.getElementById('gallery-nav-left');
+    const navRight = document.getElementById('gallery-nav-right');
+    const dotsContainer = document.getElementById('gallery-dots');
+
+    // UI 引擎：如果多于 1 张图且未开启长卷模式，则激活翻页器与圆点
+    if (!art.autoScroll && currentGalleryData.length > 1) {
+        navLeft.style.display = 'block';
+        navRight.style.display = 'block';
+        dotsContainer.style.display = 'flex';
+        
         newModalImg.style.cursor = 'pointer';
         newModalImg.title = 'Click for next image';
-        newModalImg.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % currentGallery.length;
-            newModalImg.style.opacity = '0.5';
-            setTimeout(() => {
-                newModalImg.src = currentGallery[currentIndex];
-                newModalImg.style.opacity = '1';
-            }, 150);
-        });
+        newModalImg.onclick = () => { nextImage(); };
+
+        renderDots();
     } else {
+        navLeft.style.display = 'none';
+        navRight.style.display = 'none';
+        dotsContainer.style.display = 'none';
         newModalImg.style.cursor = 'default';
         newModalImg.title = '';
+        newModalImg.onclick = null;
     }
 
     if (art.autoScroll) {
@@ -72,8 +95,8 @@ function openModal(art) {
                 track.scrollLeft = 0;
                 if (track.scrollWidth > track.clientWidth) {
                     let dir = 1;
-                    // 物理修正 2：将速度从 0.5 提升至 1.0 (像素/帧)
-                    const speed = 1.0; 
+                    // 物理修正 2：将速度参数从 1.0 跃升至 2.5
+                    const speed = 2.5; 
                     
                     function step() {
                         track.scrollLeft += dir * speed;
@@ -86,15 +109,51 @@ function openModal(art) {
             }, 100);
         };
 
-        if (newModalImg.complete) {
-            startAnimation();
-        } else {
-            newModalImg.onload = startAnimation;
-        }
+        if (newModalImg.complete) startAnimation();
+        else newModalImg.onload = startAnimation;
     }
 
     const descHTML = art.description ? marked.parse(art.description) : '';
     document.getElementById('modal-caption').innerHTML = '<h3>'+art.title+'</h3><p>'+art.meta+'</p><div>'+descHTML+'</div>';
+}
+
+/* 独立物理控制模块：翻页器与视图更新 */
+function renderDots() {
+    const dotsContainer = document.getElementById('gallery-dots');
+    dotsContainer.innerHTML = '';
+    currentGalleryData.forEach((_, idx) => {
+        const dot = document.createElement('div');
+        dot.className = 'gallery-dot' + (idx === currentGalleryIndex ? ' active' : '');
+        dot.onclick = (e) => { e.stopPropagation(); goToImage(idx); };
+        dotsContainer.appendChild(dot);
+    });
+}
+
+function updateGalleryView() {
+    const img = document.getElementById('modal-img');
+    img.style.opacity = '0.5';
+    setTimeout(() => {
+        img.src = currentGalleryData[currentGalleryIndex];
+        img.style.opacity = '1';
+        renderDots();
+    }, 150);
+}
+
+function nextImage(e) {
+    if(e) e.stopPropagation();
+    currentGalleryIndex = (currentGalleryIndex + 1) % currentGalleryData.length;
+    updateGalleryView();
+}
+
+function prevImage(e) {
+    if(e) e.stopPropagation();
+    currentGalleryIndex = (currentGalleryIndex - 1 + currentGalleryData.length) % currentGalleryData.length;
+    updateGalleryView();
+}
+
+function goToImage(idx) {
+    currentGalleryIndex = idx;
+    updateGalleryView();
 }
 
 function closeModal() { 
