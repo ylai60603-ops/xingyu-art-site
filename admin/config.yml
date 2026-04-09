@@ -22,16 +22,17 @@ collections:
           - label: "作品列表"
             name: "items"
             widget: "list"
-            # 【核心物理修正】：强制锁定后台折叠列表的显示文本为作品的 title 字段
             summary: '{{title}}'
             fields:
+              # 【核心物理修正】：将 title 字段强行置于序列绝对首位，剥夺 gallery 字段的摘要优先级
+              - {label: "作品标题", name: "title", widget: "string", required: false}
+              
               - {label: "旧版单图 (保留兼容勿删)", name: "image", widget: "image", choose_url: false, required: false}
               - label: "作品图集 (单图或多图均在此添加)"
                 name: "gallery"
                 widget: "list"
                 required: false
                 field: {label: "图片", name: "image", widget: "image", choose_url: false, required: false}
-              - {label: "作品标题", name: "title", widget: "string", required: false}
               - {label: "参数信息", name: "meta", widget: "string", required: false}
               - {label: "详细简介", name: "description", widget: "markdown", required: false}
               - {label: "首页显示宽度 (长卷选2或3)", name: "span", widget: "select", options: ["1", "2", "3"], default: "1", required: false}
