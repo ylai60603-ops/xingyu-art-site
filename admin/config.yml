@@ -22,8 +22,10 @@ collections:
           - label: "作品列表"
             name: "items"
             widget: "list"
+            # 【核心物理修正】：强制锁定后台折叠列表的显示文本为作品的 title 字段
+            summary: '{{title}}'
             fields:
-              # 物理修正 1：彻底销毁旧版单图字段，统一至 list 数组结构
+              - {label: "旧版单图 (保留兼容勿删)", name: "image", widget: "image", choose_url: false, required: false}
               - label: "作品图集 (单图或多图均在此添加)"
                 name: "gallery"
                 widget: "list"
