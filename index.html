@@ -16,9 +16,9 @@
             <li><a href="#" onclick="shareSite(); return false;">SHARE</a></li>
         </ul>
     </nav>
+    
     <main id="content-area">
         <section id="work" class="active"><div class="grid" id="work-grid"></div></section>
-        
         <section id="about">
             <div class="about-container">
                 <h2>About</h2>
@@ -32,7 +32,9 @@
     
     <div id="modal">
         <div class="modal-content">
-            <img id="modal-img" src="">
+            <div id="modal-img-track">
+                <img id="modal-img" src="">
+            </div>
             <div id="modal-caption"></div>
             <div class="modal-footer"><div class="modal-close-trigger" onclick="closeModal()">CLOSE</div></div>
         </div>
@@ -42,10 +44,8 @@
         <div class="contact-box">
             <h3 style="margin-bottom: 20px; font-weight: normal; letter-spacing: 1px;">CONTACT ARTIST</h3>
             <p style="margin-bottom: 30px; font-size: 0.9rem; color: #666;">xlai@saic.edu</p>
-            
             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=xlai@saic.edu" target="_blank" rel="noopener noreferrer" class="mail-link">Open in Gmail</a>
             <a href="https://outlook.live.com/mail/0/deeplink/compose?to=xlai@saic.edu" target="_blank" rel="noopener noreferrer" class="mail-link">Open in Outlook</a>
-            
             <button onclick="copyToClipboard('xlai@saic.edu', this)" class="mail-link" style="background: #fff; color: #111; border: 1px solid #111;">Copy Email Address</button>
             <div class="contact-cancel" onclick="closeContactForm()">CANCEL</div>
         </div>

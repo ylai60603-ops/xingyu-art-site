@@ -22,12 +22,14 @@ section.active { display: block; }
 @media (max-width: 950px) { .span-2, .span-3 { grid-column: span 1; } }
 
 #modal { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #fff; z-index: 9999; overflow-y: auto; }
-.modal-content { display: block; width: 100%; padding: 40px 20px; box-sizing: border-box; text-align: center; }
-#modal img { max-width: 90vw; max-height: 70vh; width: auto; height: auto; object-fit: contain; display: inline-block; }
+.modal-content { display: flex; flex-direction: column; align-items: center; width: 100%; padding: 40px 20px; box-sizing: border-box; text-align: center; }
+
+#modal-img-track { width: 90vw; height: 70vh; display: flex; align-items: center; justify-content: center; overflow-x: auto; overflow-y: hidden; }
+#modal img { max-width: none; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; transition: 0.2s opacity; }
+
 #modal-caption { margin: 30px auto; width: 90%; max-width: 1000px; display: block; text-align: center; line-height: 1.6; }
 #modal-caption h3, #modal-caption p, #modal-caption div { text-align: center; margin-bottom: 10px; }
 
-/* 复合渲染协议：作品底部与 ABOUT 底部共用居中返回样式 */
 .modal-footer, .about-footer { width: 100%; padding: 40px 0 100px 0; text-align: center; }
 .modal-close-trigger { display: inline-block; cursor: pointer; padding: 12px 60px; border: 1px solid #111; letter-spacing: 2px; font-size: 0.8rem; transition: 0.3s; }
 .modal-close-trigger:hover { background: #111; color: #fff; }
