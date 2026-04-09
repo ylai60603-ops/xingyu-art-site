@@ -28,10 +28,11 @@ collections:
                 name: "gallery"
                 widget: "list"
                 required: false
-                field: {label: "图片", name: "image", widget: "image", choose_url: false}
-              - {label: "作品标题", name: "title", widget: "string"}
+                # 物理修正：图集内部组件也设为非必填，防止空插槽报错
+                field: {label: "图片", name: "image", widget: "image", choose_url: false, required: false}
+              # 物理修正：标题设为非必填，彻底解除保存锁
+              - {label: "作品标题", name: "title", widget: "string", required: false}
               - {label: "参数信息", name: "meta", widget: "string", required: false}
               - {label: "详细简介", name: "description", widget: "markdown", required: false}
               - {label: "首页显示宽度 (长卷选2或3)", name: "span", widget: "select", options: ["1", "2", "3"], default: "1", required: false}
-              # 【核心配置补全】：向前端传递动画触发信号的布尔值物理开关
               - {label: "开启长卷自动水平巡视", name: "autoScroll", widget: "boolean", default: false, required: false}
