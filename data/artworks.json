@@ -181,7 +181,11 @@
     },
     {
       "span": "1",
-      "autoScroll": false
+      "autoScroll": false,
+      "image": "images/宣纸墨水.jpg",
+      "title": "Knot",
+      "meta": "Year: 2022 Medium ink, watercolor, rice pa Size 20in*24in",
+      "description": "Practicing Chinese calligraphy was a big\npart of my childhood; influenced by my roots, I combined elements from Chinese\nink painting and elements from western art to create a contrast."
     }
   ]
 }
