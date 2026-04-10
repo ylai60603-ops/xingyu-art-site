@@ -1,34 +1,56 @@
 :root { --bg: #ffffff; --text: #111; --gray: #999; }
 body { margin: 0; font-family: sans-serif; display: flex; background: var(--bg); color: var(--text); }
 
-/* V7.2 封面渲染协议：废除 Flex 居中，改用绝对定位强行分离 */
+/* V7.3 封面美学协议：全屏自适应，解除全局可点击，限制在按钮触发 */
 #site-cover {
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    background-color: #111; background-position: center; background-size: contain; background-repeat: no-repeat;
-    z-index: 100000; color: #fff; cursor: pointer; transition: opacity 0.8s ease;
+    background-color: #111; background-position: center; 
+    /* 若需要封面图如参考样本般铺满全屏，可将 contain 改为 cover */
+    background-size: contain; 
+    background-repeat: no-repeat;
+    z-index: 100000; color: #fff; transition: opacity 0.8s ease;
 }
-.cover-text-wrapper {
+
+/* 物理锚定：垂直居中，左侧停靠 8% 视口宽度 */
+.cover-content {
     position: absolute;
-    top: 10%; /* 强行锚定在图片顶部的黑色负空间 */
-    left: 0; width: 100%; text-align: center;
-    pointer-events: none; /* 防止遮挡图片的点击 */
+    top: 50%;
+    left: 8%;
+    transform: translateY(-50%);
+    text-align: left;
 }
+
 .cover-title {
-    /* 引入国际画廊高阶衬线体序列 */
-    font-family: "Didot", "Bodoni MT", "Optima", "Playfair Display", "Times New Roman", serif; 
-    font-size: 4.5rem; font-weight: normal; letter-spacing: 3px;
-    margin: 0 0 10px 0; text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+    /* 强制植入高字重几何无衬线体 */
+    font-family: "Futura", "Montserrat", "Helvetica Neue", Arial, sans-serif; 
+    font-size: 6vw; /* 响应式视口宽度单位 */
+    font-weight: 800; 
+    letter-spacing: 2px;
+    margin: 0; 
+    line-height: 1.1;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.6); /* 保留底层阴影以抵抗白色高光背景 */
 }
-.cover-subtitle {
-    /* 引入无衬线体作为副标题形成材质对比 */
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
-    font-size: 1.1rem; font-weight: 300; letter-spacing: 22px; /* 极端拉宽字间距 */
-    margin-left: 22px; /* 物理补偿 letter-spacing 造成的视觉右移 */
-    opacity: 0.85; text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+
+/* 交互 UI：实体化高对比度胶囊按钮 */
+.cover-enter-btn { 
+    display: inline-block; 
+    margin-top: 30px;
+    background: #fff; 
+    color: #111; 
+    padding: 12px 35px; 
+    border-radius: 50px; 
+    font-family: "Futura", "Montserrat", "Helvetica Neue", sans-serif;
+    font-size: 0.85rem; 
+    font-weight: bold; 
+    letter-spacing: 3px;
+    cursor: pointer; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
 }
-.cover-hint { 
-    position: absolute; bottom: 8%; left: 0; width: 100%; text-align: center;
-    font-size: 0.85rem; letter-spacing: 4px; color: #aaa; opacity: 0.6; pointer-events: none;
+.cover-enter-btn:hover { 
+    background: #eee; 
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
 }
 
 .sidebar { width: 200px; height: 100vh; padding: 40px; position: fixed; border-right: 1px solid #eee; box-sizing: border-box; background: #fff; z-index: 100; }
@@ -43,7 +65,7 @@ section.active { display: block; }
 
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; grid-auto-flow: dense; align-items: start; }
 .grid-item { cursor: pointer; margin-bottom: 20px; }
-.grid-item img { width: 100%; height: auto; display: block; aspect-ratio: 16/9; object-fit: contain; } /* 锁定高度容器 */
+.grid-item img { width: 100%; height: auto; display: block; aspect-ratio: 16/9; object-fit: contain; }
 .item-info { margin-top: 10px; font-size: 0.8rem; text-align: center; }
 
 .span-2 { grid-column: span 2; }
@@ -53,14 +75,13 @@ section.active { display: block; }
 
 #modal { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #fff; z-index: 9999; overflow-y: auto; }
 
-/* 左上角悬浮固定返回键 */
 #modal-back-top { position: fixed; top: 25px; left: 25px; color: #111; font-size: 0.9rem; letter-spacing: 2px; cursor: pointer; z-index: 10002; padding: 10px 15px; font-weight: bold; background: rgba(255,255,255,0.9); border: 1px solid #eee; border-radius: 4px; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
 #modal-back-top:hover { background: #111; color: #fff; }
 
 .modal-content { display: flex; flex-direction: column; align-items: center; width: 100%; padding: 40px 20px; box-sizing: border-box; text-align: center; }
 
 #modal-img-track { width: 90vw; height: 70vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-#modal img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; transition: none; /* 删除 opacity 过渡，切断视觉抖动 */ }
+#modal img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; transition: none; }
 
 #modal-img-track.is-scrolling { justify-content: flex-start; overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none; }
 #modal-img-track.is-scrolling::-webkit-scrollbar { display: none; }
@@ -88,4 +109,13 @@ section.active { display: block; }
 .contact-box button:hover, .contact-box .mail-link:hover { opacity: 0.8; }
 .contact-cancel { margin-top: 10px; cursor: pointer; font-size: 0.8rem; letter-spacing: 1px; color: var(--gray); }
 
-@media (max-width: 768px) { body { flex-direction: column; } .sidebar { width: 100%; height: auto; position: relative; border-bottom: 1px solid #eee; } main { margin-left: 0; width: 100%; } #modal-back-top { top: 10px; left: 10px; font-size: 0.8rem; padding: 8px 12px; } .cover-title { font-size: 3rem; } .cover-subtitle { font-size: 0.9rem; letter-spacing: 15px; margin-left: 15px; } }
+/* 响应式断点控制 */
+@media (min-width: 1200px) { .cover-title { font-size: 5rem; } }
+@media (max-width: 768px) { 
+    body { flex-direction: column; } 
+    .sidebar { width: 100%; height: auto; position: relative; border-bottom: 1px solid #eee; } 
+    main { margin-left: 0; width: 100%; } 
+    #modal-back-top { top: 10px; left: 10px; font-size: 0.8rem; padding: 8px 12px; } 
+    .cover-title { font-size: 3.5rem; } 
+    .cover-content { left: 5%; } 
+}
