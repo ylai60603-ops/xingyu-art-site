@@ -1,47 +1,44 @@
-:root { --bg: #ffffff; --text: #111; --gray: #999; }
-body { margin: 0; font-family: sans-serif; display: flex; background: var(--bg); color: var(--text); }
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&display=swap');
 
-/* V7.3 封面美学协议：全屏自适应，解除全局可点击，限制在按钮触发 */
+:root { --bg: #ffffff; --text: #111; --gray: #999; }
+body { margin: 0; font-family: "Montserrat", sans-serif; display: flex; background: var(--bg); color: var(--text); }
+
 #site-cover {
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
     background-color: #111; background-position: center; 
-    /* 若需要封面图如参考样本般铺满全屏，可将 contain 改为 cover */
-    background-size: contain; 
-    background-repeat: no-repeat;
+    background-size: contain; background-repeat: no-repeat;
     z-index: 100000; color: #fff; transition: opacity 0.8s ease;
 }
 
-/* 物理锚定：垂直居中，左侧停靠 8% 视口宽度 */
 .cover-content {
     position: absolute;
     top: 50%;
     left: 8%;
     transform: translateY(-50%);
     text-align: left;
+    z-index: 100001; 
 }
 
 .cover-title {
-    /* 强制植入高字重几何无衬线体 */
-    font-family: "Futura", "Montserrat", "Helvetica Neue", Arial, sans-serif; 
-    font-size: 6vw; /* 响应式视口宽度单位 */
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 6.5rem; 
     font-weight: 800; 
-    letter-spacing: 2px;
+    letter-spacing: -1px; 
     margin: 0; 
-    line-height: 1.1;
-    text-shadow: 0 4px 20px rgba(0,0,0,0.6); /* 保留底层阴影以抵抗白色高光背景 */
+    line-height: 1;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.8);
 }
 
-/* 交互 UI：实体化高对比度胶囊按钮 */
 .cover-enter-btn { 
     display: inline-block; 
-    margin-top: 30px;
+    margin-top: 40px;
     background: #fff; 
     color: #111; 
-    padding: 12px 35px; 
+    padding: 14px 38px; 
     border-radius: 50px; 
-    font-family: "Futura", "Montserrat", "Helvetica Neue", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.85rem; 
-    font-weight: bold; 
+    font-weight: 500; 
     letter-spacing: 3px;
     cursor: pointer; 
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
@@ -54,10 +51,10 @@ body { margin: 0; font-family: sans-serif; display: flex; background: var(--bg);
 }
 
 .sidebar { width: 200px; height: 100vh; padding: 40px; position: fixed; border-right: 1px solid #eee; box-sizing: border-box; background: #fff; z-index: 100; }
-.sidebar h1 { font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 40px; }
+.sidebar h1 { font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 40px; font-weight: 800; }
 .sidebar ul { list-style: none; padding: 0; }
 .sidebar li { margin: 20px 0; }
-.sidebar a { text-decoration: none; color: var(--text); font-size: 0.85rem; letter-spacing: 1px; }
+.sidebar a { text-decoration: none; color: var(--text); font-size: 0.85rem; letter-spacing: 1px; font-weight: 500; }
 
 main { margin-left: 200px; padding: 40px; width: calc(100% - 200px); box-sizing: border-box; }
 section { display: none; }
@@ -65,7 +62,10 @@ section.active { display: block; }
 
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; grid-auto-flow: dense; align-items: start; }
 .grid-item { cursor: pointer; margin-bottom: 20px; }
-.grid-item img { width: 100%; height: auto; display: block; aspect-ratio: 16/9; object-fit: contain; }
+
+/* 核心物理修正：剥离 aspect-ratio 与 object-fit，恢复缩略图自然高度自适应，消除不可见白边 */
+.grid-item img { width: 100%; height: auto; display: block; }
+
 .item-info { margin-top: 10px; font-size: 0.8rem; text-align: center; }
 
 .span-2 { grid-column: span 2; }
@@ -75,7 +75,7 @@ section.active { display: block; }
 
 #modal { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #fff; z-index: 9999; overflow-y: auto; }
 
-#modal-back-top { position: fixed; top: 25px; left: 25px; color: #111; font-size: 0.9rem; letter-spacing: 2px; cursor: pointer; z-index: 10002; padding: 10px 15px; font-weight: bold; background: rgba(255,255,255,0.9); border: 1px solid #eee; border-radius: 4px; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+#modal-back-top { position: fixed; top: 25px; left: 25px; color: #111; font-size: 0.9rem; letter-spacing: 2px; cursor: pointer; z-index: 10002; padding: 10px 15px; font-weight: 800; background: rgba(255,255,255,0.9); border: 1px solid #eee; border-radius: 4px; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
 #modal-back-top:hover { background: #111; color: #fff; }
 
 .modal-content { display: flex; flex-direction: column; align-items: center; width: 100%; padding: 40px 20px; box-sizing: border-box; text-align: center; }
@@ -96,20 +96,19 @@ section.active { display: block; }
 .gallery-dot { width: 8px; height: 8px; background: #ccc; border-radius: 50%; cursor: pointer; transition: 0.3s; }
 .gallery-dot.active { background: #111; }
 
-#modal-caption { margin: 30px auto; width: 90%; max-width: 1000px; display: block; text-align: center; line-height: 1.6; }
+#modal-caption { margin: 30px auto; width: 90%; max-width: 1000px; display: block; text-align: center; line-height: 1.6; font-weight: 500;}
 #modal-caption h3, #modal-caption p, #modal-caption div { text-align: center; margin-bottom: 10px; }
 
 .modal-footer, .about-footer { width: 100%; padding: 40px 0 100px 0; text-align: center; }
-.modal-close-trigger { display: inline-block; cursor: pointer; padding: 12px 60px; border: 1px solid #111; letter-spacing: 2px; font-size: 0.8rem; transition: 0.3s; }
+.modal-close-trigger { display: inline-block; cursor: pointer; padding: 12px 60px; border: 1px solid #111; letter-spacing: 2px; font-size: 0.8rem; font-weight: 800; transition: 0.3s; }
 .modal-close-trigger:hover { background: #111; color: #fff; }
 
 #contact-panel { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(255,255,255,0.98); z-index: 10000; justify-content: center; align-items: center; }
 .contact-box { width: 90%; max-width: 400px; text-align: center; padding: 40px; background: #fff; border: 1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-.contact-box button, .contact-box .mail-link { display: block; box-sizing: border-box; width: 100%; padding: 12px; margin-bottom: 15px; background: #111; color: #fff; border: none; cursor: pointer; transition: 0.3s; font-size: 0.9rem; letter-spacing: 1px; text-decoration: none; }
+.contact-box button, .contact-box .mail-link { display: block; box-sizing: border-box; width: 100%; padding: 12px; margin-bottom: 15px; background: #111; color: #fff; border: none; cursor: pointer; transition: 0.3s; font-size: 0.9rem; letter-spacing: 1px; text-decoration: none; font-weight: 500;}
 .contact-box button:hover, .contact-box .mail-link:hover { opacity: 0.8; }
 .contact-cancel { margin-top: 10px; cursor: pointer; font-size: 0.8rem; letter-spacing: 1px; color: var(--gray); }
 
-/* 响应式断点控制 */
 @media (min-width: 1200px) { .cover-title { font-size: 5rem; } }
 @media (max-width: 768px) { 
     body { flex-direction: column; } 

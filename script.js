@@ -2,32 +2,33 @@ let scrollRAF = null;
 let currentGalleryData = [];
 let currentGalleryIndex = 0;
 
-// 物理封锁协议：点击后写入内存，隐藏封面
 function enterSite() {
     sessionStorage.setItem('coverSeen', 'true');
     const cover = document.getElementById('site-cover');
-    cover.style.opacity = '0';
-    setTimeout(() => { cover.style.display = 'none'; }, 800);
+    if(cover) {
+        cover.style.opacity = '0';
+        setTimeout(() => { cover.style.display = 'none'; }, 800);
+    }
 }
 
 async function loadDynamicContent() {
     try {
-        // 物理逻辑：侦测本地缓存锁，拦截重复渲染
         const cover = document.getElementById('site-cover');
         if (sessionStorage.getItem('coverSeen') === 'true') {
-            cover.style.display = 'none';
+            if(cover) cover.style.display = 'none';
         } else {
             const s = await fetch('data/settings.json').then(r => r.json()).catch(() => ({}));
-            if (s && s.coverImage) cover.style.backgroundImage = `url('${s.coverImage}')`;
-            else cover.style.display = 'none';
+            if (s && s.coverImage && cover) cover.style.backgroundImage = `url('${s.coverImage}')`;
+            else if (cover) cover.style.display = 'none';
         }
 
         const b = await fetch('data/bio.json').then(r => r.json());
-        document.getElementById('bio-text').innerHTML = b.text ? marked.parse(b.text) : '';
+        const bioEl = document.getElementById('bio-text');
+        if(bioEl) bioEl.innerHTML = b.text ? marked.parse(b.text) : '';
         
         const a = await fetch('data/artworks.json').then(r => r.json());
         const g = document.getElementById('work-grid');
-        if (a.items) {
+        if (a.items && g) {
             a.items.forEach(art => {
                 const i = document.createElement('div'); 
                 i.className = 'grid-item span-' + (art.span || '1');
@@ -43,19 +44,19 @@ async function loadDynamicContent() {
                 g.appendChild(i);
             });
         }
-    } catch(e) { console.error("Load Failed"); }
+    } catch(e) { console.error("Load Failed", e); }
 }
 
 function showSection(id) { 
     document.querySelectorAll('section').forEach(s => s.classList.remove('active')); 
-    document.getElementById(id).classList.add('active'); 
+    const sec = document.getElementById(id);
+    if(sec) sec.classList.add('active'); 
     window.scrollTo(0,0);
 }
 
 function openModal(art) {
     const modal = document.getElementById('modal');
     modal.style.display = 'block';
-    // 物理修正 1：强制重置 DOM 的纵向滚动高度
     modal.scrollTop = 0; 
     document.body.style.overflow = 'hidden'; 
     
@@ -64,7 +65,6 @@ function openModal(art) {
     const track = document.getElementById('modal-img-track');
     track.classList.remove('is-scrolling');
 
-    // 物理修正 2：数组强制合并引擎，确保首图（旧版单图）永远呈现
     currentGalleryData = [];
     if (art.image) currentGalleryData.push(art.image);
     if (art.gallery && Array.isArray(art.gallery)) {
@@ -108,7 +108,6 @@ function openModal(art) {
         newModalImg.style.cursor = 'ew-resize';
 
         const startAnimation = () => {
-            // 物理修正 2：倍增动画速率至 2.5
             setTimeout(() => {
                 track.scrollLeft = 0;
                 if (track.scrollWidth > track.clientWidth) {
@@ -130,7 +129,7 @@ function openModal(art) {
     }
 
     const descHTML = art.description ? marked.parse(art.description) : '';
-    document.getElementById('modal-caption').innerHTML = '<h3>'+art.title+'</h3><p>'+art.meta+'</p><div>'+descHTML+'</div>';
+    document.getElementById('modal-caption').innerHTML = '<h3>'+(art.title||'')+'</h3><p>'+(art.meta||'')+'</p><div>'+descHTML+'</div>';
 }
 
 function renderDots() {
@@ -144,7 +143,6 @@ function renderDots() {
     });
 }
 
-// 物理修正 3：抹除褪色动画计算，执行 0 延迟直切瞬发替换，切断视觉抖动
 function updateGalleryView() {
     const img = document.getElementById('modal-img');
     img.src = currentGalleryData[currentGalleryIndex];
