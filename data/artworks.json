@@ -39,6 +39,14 @@
       "description": "White fabric wraps around her head. Heavy and entirely still. I painted this to figure out how cultural memory actually feels. Moving from Beijing to Chicago changes your internal gravity. I used thick blue strokes to anchor her to the canvas. She is caught in a quiet, suspended state. Does our cultural identity protect us, or does it weigh us down? I am mapping that exact psychological hesitation."
     },
     {
+      "span": "1",
+      "autoScroll": false,
+      "image": "images/油画.JPG",
+      "title": "Spheres of the Feline Spirit: A Pluralistic Vision",
+      "meta": "Year: 2024  Medium: Oil on canvas  Size:18 x 24 in",
+      "description": "I approach the feline form not as a singular organism, but as a vibrating accumulation of cosmic spheres. Painted with heavy oil pigments, the work abandons traditional biological realism for a pluralistic, geometric language. I utilize the medium's inherent impasto to sculpt each individual circle, transforming the flat canvas into a tactile field of depth and light. The sharp, complementary contrast between the atmospheric teals and the earth-bound oranges does not merely delineate space; it captures the internal tension between the unknown and the grounded.\n\nThe emerald-green eyes act as a gravitational anchor, holding the drifting fragments of form in a state of permanent, watchful equilibrium. By fragmenting the face into these discrete, textured cells, I allow the medium to dictate a new kind of order, transforming a domestic subject into a psychological landscape—a study of how identity is forged from a multitude of independent energies rather than a static document of a creature."
+    },
+    {
       "isHidden": false,
       "span": "1",
       "autoScroll": false,
@@ -46,14 +54,6 @@
       "image": "images/01-20250311-18x22-oil-painting-2-.jpg",
       "meta": "**Year:** 2025  **Medium:** Oil on canvas  **Size:** 18 x 22 in",
       "description": "She turns her back to the viewer. Flat, golden patterns start to swallow her space. I took Gustav Klimt's decorative language and forced it into a modern clash. The realistic, breathing flesh fights against the rigid 2D geometry. We constantly build beautiful surfaces to hide our messy realities. I want to see which visual system wins. Will the pattern completely erase her human identity?"
-    },
-    {
-      "span": "1",
-      "autoScroll": false,
-      "image": "images/油画.JPG",
-      "title": "Spheres of the Feline Spirit: A Pluralistic Vision",
-      "meta": "Year: 2024  Medium: Oil on canvas  Size:18 x 24 in",
-      "description": "I approach the feline form not as a singular organism, but as a vibrating accumulation of cosmic spheres. Painted with heavy oil pigments, the work abandons traditional biological realism for a pluralistic, geometric language. I utilize the medium's inherent impasto to sculpt each individual circle, transforming the flat canvas into a tactile field of depth and light. The sharp, complementary contrast between the atmospheric teals and the earth-bound oranges does not merely delineate space; it captures the internal tension between the unknown and the grounded.\n\nThe emerald-green eyes act as a gravitational anchor, holding the drifting fragments of form in a state of permanent, watchful equilibrium. By fragmenting the face into these discrete, textured cells, I allow the medium to dictate a new kind of order, transforming a domestic subject into a psychological landscape—a study of how identity is forged from a multitude of independent energies rather than a static document of a creature."
     },
     {
       "isHidden": false,
@@ -87,6 +87,17 @@
       "title": "Knot",
       "meta": "Year: 2022 Medium ink, watercolor, rice pa Size 20in*24in",
       "description": "Practicing Chinese calligraphy was a big\npart of my childhood; influenced by my roots, I combined elements from Chinese\nink painting and elements from western art to create a contrast."
+    },
+    {
+      "image": "images/IMG_20241213_162811.jpg",
+      "title": "Domestic Uncanny(Triptych / View All Panels)",
+      "meta": "Year: 2024  Medium: Oil on canvas (Triptych)  Size: 8 x 12 in (each panel)",
+      "description": " In this triptych, I explore how internal isolation projects onto the neutral screen of everyday architecture. I treat these solitary spaces---a sterile restroom, a dim stairwell, a concrete facade---as receptive surfaces for the subconscious. The unsettling details are not objective realities, but materializations of inner fear: a hand clinging to the window sill from the outside, or a fleeting face in the mirror. I painted these scenes with a clinical flatness to heighten the contrast with these surreal intrusions. I attempt to visualize the dissonance of solitude, where the silence of a familiar domestic setting is interrupted by projections of fragility. The work suggests that the \\\"uncanny\\\" is not an external intruder, but a reflection of our own psyche. I seek to capture that vibration of anxiety where the safety of the home dissolves, and the walls themselves manifest our deepest terrors.",
+      "span": "1",
+      "gallery": [
+        "images/IMG_20241213_162846.jpg",
+        "images/IMG_20241213_162922.jpg"
+      ]
     },
     {
       "image": "images/The Book of Nightmares,8x6x0.6 in,Ink on paper, thread, pop-up book,2024.jpg",
@@ -139,17 +150,6 @@
       "image": "images/风景画1.jpg",
       "meta": "**Year:** 2024  **Medium:** Oil on canvas  **Size:** 16 x 20 in",
       "description": "Bright yellow explodes against the deep blue water. Just pure light. I wanted to take a classic Chinese motif and inject it with the heavy, saturated energy of Western oil painting. The water ripples outward. Little red fish dart through the shadows. I am not painting a quiet, passive garden anymore. I am painting intense vitality. So I use thick, bright yellow strokes to make the leaves feel alive and muscular. They push right out of the dark water into the sun."
-    },
-    {
-      "image": "images/IMG_20241213_162811.jpg",
-      "title": "Domestic Uncanny(Triptych / View All Panels)",
-      "meta": "Year: 2024  Medium: Oil on canvas (Triptych)  Size: 8 x 12 in (each panel)",
-      "description": " In this triptych, I explore how internal isolation projects onto the neutral screen of everyday architecture. I treat these solitary spaces---a sterile restroom, a dim stairwell, a concrete facade---as receptive surfaces for the subconscious. The unsettling details are not objective realities, but materializations of inner fear: a hand clinging to the window sill from the outside, or a fleeting face in the mirror. I painted these scenes with a clinical flatness to heighten the contrast with these surreal intrusions. I attempt to visualize the dissonance of solitude, where the silence of a familiar domestic setting is interrupted by projections of fragility. The work suggests that the \\\"uncanny\\\" is not an external intruder, but a reflection of our own psyche. I seek to capture that vibration of anxiety where the safety of the home dissolves, and the walls themselves manifest our deepest terrors.",
-      "span": "1",
-      "gallery": [
-        "images/IMG_20241213_162846.jpg",
-        "images/IMG_20241213_162922.jpg"
-      ]
     },
     {
       "image": "images/Walking Shells,10x30 in,Oil on canvas,2025.jpg",
