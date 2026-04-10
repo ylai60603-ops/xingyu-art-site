@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="site-cover" onclick="enterSite()">
+        <h1 class="cover-title">Xingyu Lai</h1>
+        <p class="cover-hint">Click to Enter</p>
+    </div>
+
     <nav class="sidebar">
         <h1>Xingyu Lai Art</h1>
         <ul>
@@ -31,6 +36,8 @@
     </main>
     
     <div id="modal">
+        <div id="modal-back-top" onclick="closeModal()">&#10094; BACK</div>
+        
         <div id="gallery-nav-left" class="gallery-nav" onclick="prevImage(event)">&#10094;</div>
         <div id="gallery-nav-right" class="gallery-nav" onclick="nextImage(event)">&#10095;</div>
         

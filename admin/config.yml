@@ -7,6 +7,14 @@ media_folder: "images"
 public_folder: "images"
 
 collections:
+  - name: "settings"
+    label: "封面与全局设置"
+    files:
+      - label: "首页封面设置"
+        name: "cover"
+        file: "data/settings.json"
+        fields:
+          - {label: "上传封面图片", name: "coverImage", widget: "image", choose_url: false, required: false}
   - name: "content"
     label: "管理内容"
     files:
@@ -25,12 +33,11 @@ collections:
             summary: '{{title}}'
             fields:
               - {label: "作品标题", name: "title", widget: "string", required: false}
-              - {label: "旧版单图 (保留兼容勿删)", name: "image", widget: "image", choose_url: false, required: false}
+              - {label: "旧版单图 (作为首图展示)", name: "image", widget: "image", choose_url: false, required: false}
               - label: "附加作品图集 (支持多图滑动切换)"
                 name: "gallery"
                 widget: "list"
                 required: false
-                # 【核心物理修正 1】：摘要模板替換為 {{image}}，精準顯示對象屬性文件名
                 summary: '{{image}}'
                 field: {label: "图片", name: "image", widget: "image", choose_url: false, required: false}
               - {label: "参数信息", name: "meta", widget: "string", required: false}

@@ -2,8 +2,26 @@ let scrollRAF = null;
 let currentGalleryData = [];
 let currentGalleryIndex = 0;
 
+// 物理封锁协议：点击后写入内存，隐藏封面
+function enterSite() {
+    sessionStorage.setItem('coverSeen', 'true');
+    const cover = document.getElementById('site-cover');
+    cover.style.opacity = '0';
+    setTimeout(() => { cover.style.display = 'none'; }, 800);
+}
+
 async function loadDynamicContent() {
     try {
+        // 物理逻辑：侦测本地缓存锁，拦截重复渲染
+        const cover = document.getElementById('site-cover');
+        if (sessionStorage.getItem('coverSeen') === 'true') {
+            cover.style.display = 'none';
+        } else {
+            const s = await fetch('data/settings.json').then(r => r.json()).catch(() => ({}));
+            if (s && s.coverImage) cover.style.backgroundImage = `url('${s.coverImage}')`;
+            else cover.style.display = 'none';
+        }
+
         const b = await fetch('data/bio.json').then(r => r.json());
         document.getElementById('bio-text').innerHTML = b.text ? marked.parse(b.text) : '';
         
@@ -14,7 +32,6 @@ async function loadDynamicContent() {
                 const i = document.createElement('div'); 
                 i.className = 'grid-item span-' + (art.span || '1');
                 
-                // 获取封面：兼容单图优先，若无单图则抓取图集首图
                 let coverImg = '';
                 if (art.image) coverImg = art.image;
                 else if (art.gallery && art.gallery.length > 0) {
@@ -38,6 +55,8 @@ function showSection(id) {
 function openModal(art) {
     const modal = document.getElementById('modal');
     modal.style.display = 'block';
+    // 物理修正 1：强制重置 DOM 的纵向滚动高度
+    modal.scrollTop = 0; 
     document.body.style.overflow = 'hidden'; 
     
     if (scrollRAF) cancelAnimationFrame(scrollRAF);
@@ -45,7 +64,7 @@ function openModal(art) {
     const track = document.getElementById('modal-img-track');
     track.classList.remove('is-scrolling');
 
-    // 物理修正：強制合併新舊圖庫為絕對唯一的一維数组
+    // 物理修正 2：解除了 new Set() 过滤，允许重复图片的渲染
     currentGalleryData = [];
     if (art.image) currentGalleryData.push(art.image);
     if (art.gallery && Array.isArray(art.gallery)) {
@@ -54,7 +73,6 @@ function openModal(art) {
             else if (g && g.image) currentGalleryData.push(g.image);
         });
     }
-    currentGalleryData = [...new Set(currentGalleryData)]; // 剔除可能重复添加的数据
     currentGalleryIndex = 0;
 
     const modalImg = document.getElementById('modal-img');
@@ -66,7 +84,6 @@ function openModal(art) {
     const navRight = document.getElementById('gallery-nav-right');
     const dotsContainer = document.getElementById('gallery-dots');
 
-    // UI 引擎：如果多于 1 张图且未开启长卷模式，则激活翻页器与圆点
     if (!art.autoScroll && currentGalleryData.length > 1) {
         navLeft.style.display = 'block';
         navRight.style.display = 'block';
@@ -91,13 +108,11 @@ function openModal(art) {
         newModalImg.style.cursor = 'ew-resize';
 
         const startAnimation = () => {
-            // 物理修正 2：注入 100ms 延遲以確保寬高校準，並倍增速率至 2.5
             setTimeout(() => {
                 track.scrollLeft = 0;
                 if (track.scrollWidth > track.clientWidth) {
                     let dir = 1;
                     const speed = 2.5; 
-                    
                     function step() {
                         track.scrollLeft += dir * speed;
                         if (track.scrollLeft >= (track.scrollWidth - track.clientWidth - 1)) dir = -1;
@@ -109,7 +124,6 @@ function openModal(art) {
             }, 100);
         };
 
-        // 物理修正 3：注入 complete 屬性快照以繞過緩存跳躍
         if (newModalImg.complete) startAnimation();
         else newModalImg.onload = startAnimation;
     }
@@ -129,14 +143,11 @@ function renderDots() {
     });
 }
 
+// 物理修正 3：抹除褪色动画计算，执行 0 延迟直切，切断视觉抖动
 function updateGalleryView() {
     const img = document.getElementById('modal-img');
-    img.style.opacity = '0.5';
-    setTimeout(() => {
-        img.src = currentGalleryData[currentGalleryIndex];
-        img.style.opacity = '1';
-        renderDots();
-    }, 150);
+    img.src = currentGalleryData[currentGalleryIndex];
+    renderDots();
 }
 
 function nextImage(e) {
