@@ -89,15 +89,13 @@
       "description": "Practicing Chinese calligraphy was a big\npart of my childhood; influenced by my roots, I combined elements from Chinese\nink painting and elements from western art to create a contrast."
     },
     {
-      "image": "images/IMG_20241213_162811.jpg",
-      "title": "Domestic Uncanny(Triptych / View All Panels)",
-      "meta": "Year: 2024  Medium: Oil on canvas (Triptych)  Size: 8 x 12 in (each panel)",
-      "description": " In this triptych, I explore how internal isolation projects onto the neutral screen of everyday architecture. I treat these solitary spaces---a sterile restroom, a dim stairwell, a concrete facade---as receptive surfaces for the subconscious. The unsettling details are not objective realities, but materializations of inner fear: a hand clinging to the window sill from the outside, or a fleeting face in the mirror. I painted these scenes with a clinical flatness to heighten the contrast with these surreal intrusions. I attempt to visualize the dissonance of solitude, where the silence of a familiar domestic setting is interrupted by projections of fragility. The work suggests that the \\\"uncanny\\\" is not an external intruder, but a reflection of our own psyche. I seek to capture that vibration of anxiety where the safety of the home dissolves, and the walls themselves manifest our deepest terrors.",
+      "isHidden": false,
       "span": "1",
-      "gallery": [
-        "images/IMG_20241213_162846.jpg",
-        "images/IMG_20241213_162922.jpg"
-      ]
+      "autoScroll": false,
+      "title": "Sunlit Ripples",
+      "image": "images/风景画1.jpg",
+      "meta": "**Year:** 2024  **Medium:** Oil on canvas  **Size:** 16 x 20 in",
+      "description": "Bright yellow explodes against the deep blue water. Just pure light. I wanted to take a classic Chinese motif and inject it with the heavy, saturated energy of Western oil painting. The water ripples outward. Little red fish dart through the shadows. I am not painting a quiet, passive garden anymore. I am painting intense vitality. So I use thick, bright yellow strokes to make the leaves feel alive and muscular. They push right out of the dark water into the sun."
     },
     {
       "image": "images/The Book of Nightmares,8x6x0.6 in,Ink on paper, thread, pop-up book,2024.jpg",
@@ -143,13 +141,15 @@
       ]
     },
     {
-      "isHidden": false,
+      "image": "images/IMG_20241213_162811.jpg",
+      "title": "Domestic Uncanny(Triptych / View All Panels)",
+      "meta": "Year: 2024  Medium: Oil on canvas (Triptych)  Size: 8 x 12 in (each panel)",
+      "description": " In this triptych, I explore how internal isolation projects onto the neutral screen of everyday architecture. I treat these solitary spaces---a sterile restroom, a dim stairwell, a concrete facade---as receptive surfaces for the subconscious. The unsettling details are not objective realities, but materializations of inner fear: a hand clinging to the window sill from the outside, or a fleeting face in the mirror. I painted these scenes with a clinical flatness to heighten the contrast with these surreal intrusions. I attempt to visualize the dissonance of solitude, where the silence of a familiar domestic setting is interrupted by projections of fragility. The work suggests that the \\\"uncanny\\\" is not an external intruder, but a reflection of our own psyche. I seek to capture that vibration of anxiety where the safety of the home dissolves, and the walls themselves manifest our deepest terrors.",
       "span": "1",
-      "autoScroll": false,
-      "title": "Sunlit Ripples",
-      "image": "images/风景画1.jpg",
-      "meta": "**Year:** 2024  **Medium:** Oil on canvas  **Size:** 16 x 20 in",
-      "description": "Bright yellow explodes against the deep blue water. Just pure light. I wanted to take a classic Chinese motif and inject it with the heavy, saturated energy of Western oil painting. The water ripples outward. Little red fish dart through the shadows. I am not painting a quiet, passive garden anymore. I am painting intense vitality. So I use thick, bright yellow strokes to make the leaves feel alive and muscular. They push right out of the dark water into the sun."
+      "gallery": [
+        "images/IMG_20241213_162846.jpg",
+        "images/IMG_20241213_162922.jpg"
+      ]
     },
     {
       "image": "images/Walking Shells,10x30 in,Oil on canvas,2025.jpg",
@@ -166,6 +166,29 @@
       "image": "images/10-20241018-22x28-oil-painting.jpg",
       "meta": "**Year:** 2024 **Medium:** Oil on canvas **Size:** 22 x 28 in",
       "description": "Dust floats in sharp beams of yellow light. The stage is bright. But she stands completely in the shadows. I painted a traditional Chinese theater to map the exact distance between a person and their own history. Growing up in Beijing, this culture surrounds you. Now in Chicago, I feel like a spectator of my own heritage. So I used thick oil paint to make the light beams feel like solid, physical barriers. The figure in the foreground wears heavy theatrical makeup. She is dressed for the part. And yet her gaze is totally detached. She is not looking at the performance. Is she an actor who stepped off the stage, or an audience member who got too close? We put our cultural memory under a spotlight. Do we actually live inside it, or do we just watch it perform for us in the dark?"
+    },
+    {
+      "image": "images/1-0 (大).jpg",
+      "title": "Medical Astrology: The Hidden Flame Medium(Selection / View All Panels)",
+      "meta": "Year: 2025  Title: : Ink on tracing paper, digital prints, lightbox  Size: 8.5 x 11 in (each)",
+      "description": "This series reimagines the body as a sacred vessel. Based on Hermetic \\\"correspondence,\\\" I map Zodiac signs onto organs---visualizing the Aries ram in the brain. The work is a lightbox installation constructed from four stacked layers: (1) Exterior tattoos on tracing paper; (2) Skin photograph on bond paper; (3) Internal Zodiac tattoos on tracing paper; (4) Internal organ photograph. The experience transforms with light. OFF: Viewers see only the mundane outer skin. ON: Backlighting penetrates the layers, suddenly revealing the hidden organs and glowing \\\"inner tattoos\\\" beneath. This mechanism visualizes Gnostic revelation: light exposing the divine spark hidden within the flesh, turning anatomy into theology..",
+      "span": "1",
+      "gallery": [
+        "images/1-2 (大).jpg",
+        "images/1-3 (大).jpg",
+        "images/2-0 (大).jpg",
+        "images/2-2 (大).jpg",
+        "images/2-3 (大).jpg",
+        "images/3-0 (大).jpg",
+        "images/3-2 (大).jpg",
+        "images/3-3 (大).jpg",
+        "images/4-0 (大).jpg",
+        "images/4-2 (大).jpg",
+        "images/4-3 (大).jpg",
+        "images/5-0 (大).jpg",
+        "images/5-2 (大).jpg",
+        "images/5-3 (大).jpg"
+      ]
     },
     {
       "span": "1",
@@ -206,29 +229,6 @@
       "meta": "Year: 2023 Medium: Digital photograph",
       "title": "Chromium Covenant: The Liquid Threshold",
       "description": "1. Theme: Anachronism and the Artificial Threshold\nIn this piece, the \"anachronism\" manifests as a natural phenomenon physically isolated by an artificial landscape—the aquarium viewing window. I positioned the figure before a massive, pressurized glass interface, a threshold space connecting dried reality with a synthetic deep-sea environment. The visual conflict erupts between the cold precision of modern engineering and the primordial, fluid energy beneath the surface. Reclined in a near-meditative state, the figure does not merely observe; she utilizes this transparent physical barrier to perform a sensory reclamation of \"encapsulated nature.\"\n\n2. Artistic Technique: Acrylic Refraction and Spectral Spill\nI treat this shoot as a study of the physical properties of light as it penetrates a heavy, artificial medium (acrylic).\n\n* Collision of Matter: The frame is divided by the thick glass of the viewing window into two distinct density fields. The foreground consists of dry, concrete air and fabric; the background is a high-pressure, granular blue fluid. This physical spatiality, forcibly separated by industrial materials, creates a visual sense of deep-sea compression.\n* Light Penetration and Refraction: I relied entirely on the artificial cool-blue light sources from within the tank. As light penetrates the thick transparent medium, it undergoes refraction and spills into the darkened viewing area in diffused, low-frequency wavelengths. This refracted light catches the edges of the gown's folds, granting the white fabric a visual illusion of bioluminescence.\n* Geometric Confinement and Somatic Deconstruction: The circular viewport establishes the rigid boundary of the composition, symbolizing the human containment and observation of oceanic power. The diagonal organic curve of the subject’s body disrupts the perfect circularity, introducing an organic and unpredictable variable into this engineered framework."
-    },
-    {
-      "image": "images/1-0 (大).jpg",
-      "title": "Medical Astrology: The Hidden Flame Medium(Selection / View All Panels)",
-      "meta": "Year: 2025  Title: : Ink on tracing paper, digital prints, lightbox  Size: 8.5 x 11 in (each)",
-      "description": "This series reimagines the body as a sacred vessel. Based on Hermetic \\\"correspondence,\\\" I map Zodiac signs onto organs---visualizing the Aries ram in the brain. The work is a lightbox installation constructed from four stacked layers: (1) Exterior tattoos on tracing paper; (2) Skin photograph on bond paper; (3) Internal Zodiac tattoos on tracing paper; (4) Internal organ photograph. The experience transforms with light. OFF: Viewers see only the mundane outer skin. ON: Backlighting penetrates the layers, suddenly revealing the hidden organs and glowing \\\"inner tattoos\\\" beneath. This mechanism visualizes Gnostic revelation: light exposing the divine spark hidden within the flesh, turning anatomy into theology..",
-      "span": "1",
-      "gallery": [
-        "images/1-2 (大).jpg",
-        "images/1-3 (大).jpg",
-        "images/2-0 (大).jpg",
-        "images/2-2 (大).jpg",
-        "images/2-3 (大).jpg",
-        "images/3-0 (大).jpg",
-        "images/3-2 (大).jpg",
-        "images/3-3 (大).jpg",
-        "images/4-0 (大).jpg",
-        "images/4-2 (大).jpg",
-        "images/4-3 (大).jpg",
-        "images/5-0 (大).jpg",
-        "images/5-2 (大).jpg",
-        "images/5-3 (大).jpg"
-      ]
     },
     {
       "image": "images/Pure Energy,27x27 in,Ink on paper,2026.jpg",
