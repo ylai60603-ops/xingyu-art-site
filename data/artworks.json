@@ -59,27 +59,19 @@
       "isHidden": false,
       "span": "1",
       "autoScroll": false,
-      "image": "images/07-20241213-36x24-oil-painting.jpg",
-      "title": "Internal Bloom",
-      "meta": "Year: 2024  Medium: Oil on canvas  Size: 36 x 24 in",
-      "description": "A red heart burns inside a cage of blue bones. I cut the body open. Not with a knife, but with paint. I want to show the exact place where biological life meets emotional pain. The girl floats in a fluid, dreamlike space. So I exposed her ribs to break the defensive shell of the human form. I am digging into the vulnerability hidden under our meat. We hide our most vital organs behind bone. I forced them out into the open air."
-    },
-    {
-      "isHidden": false,
-      "span": "1",
-      "autoScroll": false,
       "title": "Sunlit Ripples",
       "image": "images/风景画1.jpg",
       "meta": "**Year:** 2024  **Medium:** Oil on canvas  **Size:** 16 x 20 in",
       "description": "Bright yellow explodes against the deep blue water. Just pure light. I wanted to take a classic Chinese motif and inject it with the heavy, saturated energy of Western oil painting. The water ripples outward. Little red fish dart through the shadows. I am not painting a quiet, passive garden anymore. I am painting intense vitality. So I use thick, bright yellow strokes to make the leaves feel alive and muscular. They push right out of the dark water into the sun."
     },
     {
+      "isHidden": false,
       "span": "1",
       "autoScroll": false,
-      "image": "images/img_3714.jpg",
-      "title": "Knot",
-      "meta": "Year: 2022 Medium ink, watercolor, rice pa Size 20in*24in",
-      "description": "Practicing Chinese calligraphy was a big\npart of my childhood; influenced by my roots, I combined elements from Chinese\nink painting and elements from western art to create a contrast."
+      "image": "images/07-20241213-36x24-oil-painting.jpg",
+      "title": "Internal Bloom",
+      "meta": "Year: 2024  Medium: Oil on canvas  Size: 36 x 24 in",
+      "description": "A red heart burns inside a cage of blue bones. I cut the body open. Not with a knife, but with paint. I want to show the exact place where biological life meets emotional pain. The girl floats in a fluid, dreamlike space. So I exposed her ribs to break the defensive shell of the human form. I am digging into the vulnerability hidden under our meat. We hide our most vital organs behind bone. I forced them out into the open air."
     },
     {
       "span": "1",
@@ -88,6 +80,14 @@
       "title": "Through the Lens",
       "meta": "Year: 2022 Medium:wooden board, acrylic, water color, rice paper Size 18*22in",
       "description": "Misinformation on the internet negatively\nand unconsciously impacts our thinking. The things we see through the internet\nare filtered and polished, but people often choose to believe before thinking.\nThrough this piece, I wish to advocate for others to see the world with their\nown eyes."
+    },
+    {
+      "span": "1",
+      "autoScroll": false,
+      "image": "images/img_3714.jpg",
+      "title": "Knot",
+      "meta": "Year: 2022 Medium ink, watercolor, rice pa Size 20in*24in",
+      "description": "Practicing Chinese calligraphy was a big\npart of my childhood; influenced by my roots, I combined elements from Chinese\nink painting and elements from western art to create a contrast."
     },
     {
       "span": "1",
