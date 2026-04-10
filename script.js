@@ -64,7 +64,7 @@ function openModal(art) {
     const track = document.getElementById('modal-img-track');
     track.classList.remove('is-scrolling');
 
-    // 物理修正 2：解除了 new Set() 过滤，允许重复图片的渲染
+    // 物理修正 2：数组强制合并引擎，确保首图（旧版单图）永远呈现
     currentGalleryData = [];
     if (art.image) currentGalleryData.push(art.image);
     if (art.gallery && Array.isArray(art.gallery)) {
@@ -108,6 +108,7 @@ function openModal(art) {
         newModalImg.style.cursor = 'ew-resize';
 
         const startAnimation = () => {
+            // 物理修正 2：倍增动画速率至 2.5
             setTimeout(() => {
                 track.scrollLeft = 0;
                 if (track.scrollWidth > track.clientWidth) {
@@ -143,7 +144,7 @@ function renderDots() {
     });
 }
 
-// 物理修正 3：抹除褪色动画计算，执行 0 延迟直切，切断视觉抖动
+// 物理修正 3：抹除褪色动画计算，执行 0 延迟直切瞬发替换，切断视觉抖动
 function updateGalleryView() {
     const img = document.getElementById('modal-img');
     img.src = currentGalleryData[currentGalleryIndex];
