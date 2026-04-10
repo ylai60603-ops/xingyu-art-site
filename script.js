@@ -30,6 +30,9 @@ async function loadDynamicContent() {
         const g = document.getElementById('work-grid');
         if (a.items && g) {
             a.items.forEach(art => {
+                // 核心物理拦截 2.0：只有明确被标记为“下架(true)”的作品才会被熔断跳过
+                if (art.isHidden === true) return;
+
                 const i = document.createElement('div'); 
                 i.className = 'grid-item span-' + (art.span || '1');
                 
@@ -39,7 +42,7 @@ async function loadDynamicContent() {
                     coverImg = typeof art.gallery[0] === 'string' ? art.gallery[0] : art.gallery[0].image;
                 }
                 
-                i.innerHTML = '<img src="'+coverImg+'"><div class="item-info"><p>'+art.title+'</p></div>';
+                i.innerHTML = '<img src="'+coverImg+'"><div class="item-info"><p>'+(art.title||'')+'</p></div>';
                 i.onclick = () => openModal(art); 
                 g.appendChild(i);
             });

@@ -33,7 +33,8 @@ collections:
             summary: '{{title}}'
             fields:
               - {label: "作品标题", name: "title", widget: "string", required: false}
-              - {label: "是否发布 (关闭则存为草稿，前端不显示)", name: "isPublished", widget: "boolean", default: true, required: false}
+              # 核心物理修正：改为“临时下架”开关，与 CMS 默认灰色状态完美咬合
+              - {label: "临时下架此作品 (开启后，前端将撤下此作品)", name: "isHidden", widget: "boolean", default: false, required: false}
               - {label: "旧版单图 (作为首图展示)", name: "image", widget: "image", choose_url: false, required: false}
               - label: "附加作品图集 (支持多图滑动切换)"
                 name: "gallery"
