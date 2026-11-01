@@ -23,7 +23,8 @@
       "autoScroll": false,
       "title": "Time",
       "image": "images/time-28x50in-oil-on-canvas-2026.jpg",
-      "meta": "2026,28x50in,Oil on canvas"
+      "meta": "2026,28x50in,Oil on canvas",
+      "description": "Time follows an inward rhythm beyond rigid measure. In the intervals between order and pause, thoughts and memories wander freely through quiet depths. A sensitive, abundant inner life persists there, preserving something intimate and true that resists assimilation."
     },
     {
       "isHidden": false,
@@ -31,7 +32,8 @@
       "autoScroll": false,
       "title": "Cold Mountain",
       "meta": "2026,14x14in,,Oil on canvas",
-      "image": "images/cold-mountain-14x14in-oil-on-canvas-2026.jpg"
+      "image": "images/cold-mountain-14x14in-oil-on-canvas-2026.jpg",
+      "description": "In solitude, the world’s clamor falls away, and even familiar surroundings feel remote. An inward coldness changes how the world feels. In the mountain’s stillness, private feeling and external reality become inseparable; the place one inhabits becomes a state of mind."
     },
     {
       "isHidden": false,
@@ -42,7 +44,8 @@
       "image": "images/street-i-8x10in-oil-on-canvas-2026.jpg",
       "gallery": [
         "images/street-ii-8x10in-oil-on-canvas-2026.jpg"
-      ]
+      ],
+      "description": "Familiar routes shift quietly in memory, becoming a silent, estranged inner theater. The certainty of daily life recedes, while wandering thoughts and lingering hesitations echo within. These streets give shelter to a lucid solitude that has nowhere else to settle."
     },
     {
       "isHidden": false,
@@ -50,7 +53,8 @@
       "autoScroll": false,
       "title": "Gossamer",
       "meta": "2026,20x16in,Acrylicon fabric",
-      "image": "images/gossamer-20x16in-acrylicon-fabric-2026.jpg"
+      "image": "images/gossamer-20x16in-acrylicon-fabric-2026.jpg",
+      "description": "Delicate, vulnerable feeling reaches like gossamer into emptiness, seeking something to hold on to and something that answers. A tentative touch meets a longing that will not let go. Amid darkness and weightlessness, a warm breath of life persists at the edge of dissolution."
     },
     {
       "image": "images/the-fractured-internal-landscape-12x12-in-oil-on-canvas2025.jpg",
@@ -64,7 +68,8 @@
       "autoScroll": false,
       "title": "The Dance of Wither and Bloom",
       "meta": "2026,10x8in,Acrylic and airbrush on fabric",
-      "image": "images/the-dance-of-wither-and-bloom-10x8in-acrylic-and-airbrush-on-fabric-2026.jpg"
+      "image": "images/the-dance-of-wither-and-bloom-10x8in-acrylic-and-airbrush-on-fabric-2026.jpg",
+      "description": "Vulnerability struggles in the bitter cold, while vitality dances through pain in the wind. Visceral suffering and unceasing longing intertwine deep within the soul. Withering and blooming remain inseparable within a single dance of life, carrying both this tension and a profound attachment to being alive."
     },
     {
       "isHidden": false,
@@ -72,7 +77,8 @@
       "autoScroll": false,
       "title": "The Subtle Quiver",
       "meta": "2026,8x10in,Acrylic and airbrush on fabric",
-      "image": "images/the-subtle-quiver-8x10in-acrylic-and-airbrush-on-fabric-2026.jpg"
+      "image": "images/the-subtle-quiver-8x10in-acrylic-and-airbrush-on-fabric-2026.jpg",
+      "description": "Deep within, the slightest touch can set off a subtle, unmistakable tremor. Feelings that have not yet found words settle quietly and endure, preserving the most intimate stirrings of life."
     },
     {
       "image": "images/reflection-duality-18x24-in-oil-on-canvas-2024.jpg",
