@@ -267,12 +267,34 @@
       ]
     },
     {
+      "isHidden": false,
+      "span": "1",
+      "autoScroll": false,
+      "title": "First Plumage｜初羽",
+      "image": "images/img_20261106_115023.jpg",
+      "gallery": [
+        "images/img_20261106_114835.jpg"
+      ]
+    },
+    {
+      "isHidden": false,
+      "span": "1",
+      "autoScroll": false,
+      "title": "Folded Wings｜敛羽",
+      "image": "images/img_20261106_113733.jpg",
+      "gallery": [
+        "images/img_20261106_113708.jpg",
+        "images/img_20261106_113846.jpg"
+      ]
+    },
+    {
       "span": "1",
       "autoScroll": false,
       "image": "images/IMG_2648.JPG",
       "meta": "Year: 2024 Medium: Digital photograph / Self-Portrait Size: 16:9",
       "title": "Self-Portrait: Butterfly Wings | 《自拍像：蝶之翼》",
-      "description": "I use butterfly wings to express a longing for my inner life to unfold freely, embracing my own sensitivity and vulnerability. Hesitation and longing, tenderness and strength intertwine within a complex sense of self. Through transformation, I continue to cherish this intimate experience of being alive.\n\n我借蝶翼寄托内在生命自由舒展的愿望，也表达对自身敏感与脆弱的接纳。迟疑与渴望、柔软与力量彼此交织，构成真实而复杂的自我。蜕变之中，我依然珍视这份属于自己的生命感受。"
+      "description": "I use butterfly wings to express a longing for my inner life to unfold freely, embracing my own sensitivity and vulnerability. Hesitation and longing, tenderness and strength intertwine within a complex sense of self. Through transformation, I continue to cherish this intimate experience of being alive.\n\n我借蝶翼寄托内在生命自由舒展的愿望，也表达对自身敏感与脆弱的接纳。迟疑与渴望、柔软与力量彼此交织，构成真实而复杂的自我。蜕变之中，我依然珍视这份属于自己的生命感受。",
+      "isHidden": true
     },
     {
       "span": "1",
@@ -280,7 +302,8 @@
       "image": "images/IMG_6469.jpg",
       "title": "Iron and White | 铁与白",
       "description": "The meeting of softness and hardness brings bodily vulnerability and agency into view together. I am interested in a relationship with the surroundings that involves both constraint and support. White fabric contrasts with a dark structure, while the body's posture keeps that relationship unresolved. The photograph rests between reliance and resistance, considering how an individual retains a position and a will of their own within given conditions.\n\n柔软与坚硬的并置，使身体的脆弱和主动性同时显现。我关注人物与环境之间既受限制、又相互支撑的关系。白色织物与深色结构形成对照，身体的姿态则使这种关系保持开放。作品停留在依靠与抵抗之间，思考个体如何在既定条件中保留自己的位置与意志。",
-      "meta": "Year: 2024 Medium: Digital photograph"
+      "meta": "Year: 2024 Medium: Digital photograph",
+      "isHidden": true
     },
     {
       "span": "1",
