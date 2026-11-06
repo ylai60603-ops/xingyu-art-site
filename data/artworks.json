@@ -288,6 +288,17 @@
       ]
     },
     {
+      "isHidden": true,
+      "span": "1",
+      "autoScroll": false,
+      "title": "Self-Portrait｜自塑像",
+      "image": "images/img_20261106_114713.jpg",
+      "gallery": [
+        "images/img_20261106_114647.jpg",
+        "images/img_20261106_114539.jpg"
+      ]
+    },
+    {
       "span": "1",
       "autoScroll": false,
       "image": "images/IMG_2648.JPG",
